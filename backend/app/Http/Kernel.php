@@ -32,5 +32,7 @@ class Kernel extends HttpKernel
         'verify.payment.webhook' => \App\Http\Middleware\VerifyPaymentWebhookSignature::class,
         'verify.and.log.webhook' => \App\Http\Middleware\VerifyAndLogPaymentWebhook::class,
         'request.id' => \App\Http\Middleware\RequestId::class,
+       'feature' => \App\Http\Middleware\CheckFeatureFlag::class,
+'ip.deny' => \App\Http\Middleware\IpDenylist::class,
     ];
 }
