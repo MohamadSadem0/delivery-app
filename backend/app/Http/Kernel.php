@@ -17,13 +17,18 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            // If you prefer enforcing idempotency globally for API mutations, uncomment:
+            // \App\Http\Middleware\Idempotency::class,
         ],
     ];
 
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'ensure.vendor' => \App\Http\Middleware\EnsureVendor::class,
+        'auth'                   => \Illuminate\Auth\Middleware\Authenticate::class,
+        'bindings'               => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'throttle'               => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'ensure.vendor'          => \App\Http\Middleware\EnsureVendor::class,
+        'ensure.admin'           => \App\Http\Middleware\EnsureAdmin::class,
+        'idempotency'            => \App\Http\Middleware\Idempotency::class,
+        'verify.payment.webhook' => \App\Http\Middleware\VerifyPaymentWebhookSignature::class,
     ];
 }

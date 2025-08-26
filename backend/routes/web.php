@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocsController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/docs/openapi.json', [DocsController::class,'openapi']);
