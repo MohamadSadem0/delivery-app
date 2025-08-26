@@ -3,19 +3,22 @@
 namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
 class RegisterRequest extends FormRequest
 {
-    public function authorize(): bool { return true; }
+    public function authorize(): bool
+    {
+        return true;
+    }
 
     public function rules(): array
     {
         return [
-            'name'     => ['required','string','max:191'],
-            'email'    => ['required','email','unique:users,email'],
-            'password' => ['required', Password::min(8)],
-            'role'     => ['nullable','in:CUSTOMER,VENDOR,DELIVERY,ADMIN'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
+            'phone' => ['nullable', 'string', 'max:30'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['nullable', 'in:customer,vendor,admin'],
         ];
     }
 }

@@ -27,7 +27,12 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-
+    
+    
+    
+    // ...
+    App\Providers\RepositoryServiceProvider::class,
+],
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -61,11 +66,11 @@ return [
     |
     | Here you may specify the default timezone for your application, which
     | will be used by the PHP date and date-time functions. The timezone
-    | is set to "Asia/Beirut" by default as it is suitable for most use cases.
+    | is set to "UTC" by default as it is suitable for most use cases.
     |
     */
 
-    'timezone' => 'Asia/Beirut',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
