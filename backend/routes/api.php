@@ -8,12 +8,19 @@ use App\Http\Controllers\API\V1\PaymentController;
 use App\Http\Controllers\API\V1\CouponController;
 use App\Http\Controllers\API\V1\OrderController;
 use App\Http\Controllers\API\V1\CartController;
+use App\Http\Controllers\API\V1\RefundController;
+use App\Http\Controllers\API\V1\HealthCheckController;
+
+
 
 // /api prefix is registered by RouteServiceProvider
 Route::prefix('v1')->group(function () {
+    Route::get('v1/health', HealthCheckController::class);
+
     // Auth (public)
     Route::post('auth/register', [AuthController::class, 'register']);
     Route::post('auth/login', [AuthController::class, 'login']);
+Route::middleware('auth:api')->post('v1/orders/{order}/refunds', [RefundController::class, 'requestRefund']);
 
     // Catalog (public)
     Route::get('catalog/categories', [CatalogController::class, 'categories']);

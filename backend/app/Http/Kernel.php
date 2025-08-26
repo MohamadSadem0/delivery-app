@@ -30,5 +30,7 @@ class Kernel extends HttpKernel
         'ensure.admin'           => \App\Http\Middleware\EnsureAdmin::class,
         'idempotency'            => \App\Http\Middleware\Idempotency::class,
         'verify.payment.webhook' => \App\Http\Middleware\VerifyPaymentWebhookSignature::class,
+        'verify.and.log.webhook' => \App\Http\Middleware\VerifyAndLogPaymentWebhook::class,
+        'request.id' => \App\Http\Middleware\RequestId::class,
     ];
 }

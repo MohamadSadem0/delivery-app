@@ -1,0 +1,12 @@
+// Add to admin routes:
+use App\Http\Controllers\API\V1\Admin\RefundController as AdminRefundController;
+use App\Http\Controllers\API\V1\Admin\AuditExportController;
+use App\Domain\Finance\Models\VendorPayout;
+
+Route::get('refunds', [AdminRefundController::class,'index']);
+Route::get('refunds/{refund}', [AdminRefundController::class,'show']);
+Route::post('refunds/{refund}/approve', [AdminRefundController::class,'approve']);
+Route::post('refunds/{refund}/decline', [AdminRefundController::class,'decline']);
+Route::post('refunds/{refund}/process', [AdminRefundController::class,'process']);
+
+Route::get('audit-logs/export', [AuditExportController::class,'export']);

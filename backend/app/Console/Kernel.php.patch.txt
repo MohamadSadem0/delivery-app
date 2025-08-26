@@ -1,0 +1,2 @@
+// In schedule(Schedule $schedule):
+// $schedule->command('payouts:generate')->monthlyOn(1, '03:00'); // Asia/Beirut
