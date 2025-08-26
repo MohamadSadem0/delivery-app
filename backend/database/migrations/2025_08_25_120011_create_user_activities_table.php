@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('user_activities', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('type'); // login, logout
+            $table->string('type');
             $table->string('ip')->nullable();
             $table->text('user_agent')->nullable();
             $table->timestamps();

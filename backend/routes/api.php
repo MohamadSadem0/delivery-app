@@ -12,7 +12,9 @@ use App\Http\Controllers\API\V1\RefundController;
 use App\Http\Controllers\API\V1\HealthCheckController;
 
 
-
+Route::get('v1/ping', function () {
+    return response()->json(['pong' => true, 'time' => now()->toISOString()]);
+});
 // /api prefix is registered by RouteServiceProvider
 Route::prefix('v1')->group(function () {
     Route::get('v1/health', HealthCheckController::class);

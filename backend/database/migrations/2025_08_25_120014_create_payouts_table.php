@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('payouts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('store_id');
-            $table->timestamp('period_start');
-            $table->timestamp('period_end');
+            $table->dateTime('period_start')->nullable();
+            $table->dateTime('period_end')->nullable();
             $table->unsignedInteger('gross_amount')->default(0);
             $table->unsignedInteger('commission_amount')->default(0);
             $table->unsignedInteger('net_amount')->default(0);

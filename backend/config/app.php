@@ -86,7 +86,7 @@ return [
     Illuminate\Cookie\CookieServiceProvider::class,
     Illuminate\Database\DatabaseServiceProvider::class,
     Illuminate\Encryption\EncryptionServiceProvider::class,
-    Illuminate\Filesystem\FilesystemServiceProvider::class,   // ✅ THIS ONE REGISTERS 'files'
+    Illuminate\Filesystem\FilesystemServiceProvider::class,  
     Illuminate\Foundation\Providers\FoundationServiceProvider::class,
     Illuminate\Hashing\HashServiceProvider::class,
     Illuminate\Mail\MailServiceProvider::class,
@@ -100,7 +100,7 @@ return [
     Illuminate\Translation\TranslationServiceProvider::class,
     Illuminate\Validation\ValidationServiceProvider::class,
     Illuminate\View\ViewServiceProvider::class,
-
+     
     /*
     * Application Service Providers...
     */
@@ -109,6 +109,4 @@ return [
     App\Providers\EventServiceProvider::class,
     // App\Providers\BroadcastServiceProvider::class,
     // App\Providers\RouteServiceProvider::class, // (Laravel 10) or leave to default
-],
-
-];
+],];

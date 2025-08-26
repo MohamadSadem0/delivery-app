@@ -14,15 +14,15 @@ use App\Support\Fx\StaticFxRateProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    // public function register(): void
-    // {
-    //     $this->app->bind(ProductRepository::class, EloquentProductRepository::class);
-    // }
-
     public function register(): void
-{
-    $this->app->bind(FxRateProvider::class, StaticFxRateProvider::class);
-}
+    {
+        $this->app->bind(ProductRepository::class, EloquentProductRepository::class);
+    }
+
+//     public function register(): void
+// {
+//     $this->app->bind(FxRateProvider::class, StaticFxRateProvider::class);
+// }
     public function boot(): void
     {
         // Polymorphic map for audits (optional)

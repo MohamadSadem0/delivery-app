@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('key');
             $table->boolean('value')->default(false);
-            $table->string('scope_type')->nullable(); // global, user, store
+            $table->string('scope_type')->nullable();
             $table->unsignedBigInteger('scope_id')->nullable();
             $table->timestamps();
             $table->unique(['key','scope_type','scope_id']);
