@@ -10,25 +10,46 @@ class VerifyPaymentWebhookSignature
 {
     public function handle(Request $request, Closure $next)
     {
-        if (app()->environment('local', 'testing')) {
-            return $next($request);
-        }
+        // if (app()->environment('local', 'testing')) {
+        //     return $next($request);
+        // }
 
-        $secret = config('services.webhooks.payment_secret', env('PAYMENT_WEBHOOK_SECRET'));
-        if (!$secret) {
-            return response()->json(['message' => 'Webhook secret not configured'], 500);
-        }
+        // $secret = config('services.webhooks.payment_secret', env('PAYMENT_WEBHOOK_SECRET'));
+        // if (!$secret) {
+        //     return response()->json(['message' => 'Webhook secret not configured'], 500);
+        // }
+
+        // $signature = $request->header('X-Signature');
+        // $payload = $request->getContent();
+
+        // $expected = hash_hmac('sha256', $payload, $secret);
+
+        // if (!hash_equals($expected, (string)$signature)) {
+        //     // optionally log suspicious activity
+        //     return response()->json(['message' => 'Invalid webhook signature'], 401);
+        // }
+
+        // return $next($request);
 
         $signature = $request->header('X-Signature');
-        $payload = $request->getContent();
+$timestamp = (int) $request->header('X-Timestamp'); // seconds epoch
+$skew      = 300; // 5 minutes
 
-        $expected = hash_hmac('sha256', $payload, $secret);
+if (!$timestamp || abs(time() - $timestamp) > $skew) {
+    abort(400, 'Stale webhook');
+}
 
-        if (!hash_equals($expected, (string)$signature)) {
-            // optionally log suspicious activity
-            return response()->json(['message' => 'Invalid webhook signature'], 401);
-        }
+$provider = $request->route('provider'); // 'stripe', 'paypal', etc
+$secret   = config("payments.providers.$provider.webhook_secret");
 
-        return $next($request);
+if (!$secret) abort(400, 'Unknown provider');
+
+$payload  = $timestamp.'.'.$request->getContent();
+$expected = hash_hmac('sha256', $payload, $secret);
+
+if (!hash_equals($expected, $signature)) {
+    abort(401, 'Invalid signature');
+}
+return $next($request);
     }
 }

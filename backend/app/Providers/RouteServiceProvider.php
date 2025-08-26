@@ -21,3 +21,24 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/vendor.php'));
     }
 }
+
+
+
+// use Illuminate\Cache\RateLimiting\Limit;
+// use Illuminate\Support\Facades\RateLimiter;
+// use Illuminate\Http\Request;
+
+// public function boot(): void
+// {
+//     RateLimiter::for('login', fn(Request $request) =>
+//         Limit::perMinute(5)->by($request->ip())
+//     );
+
+//     RateLimiter::for('checkout', fn(Request $request) =>
+//         Limit::perMinute(10)->by(optional($request->user())->id ?: $request->ip())
+//     );
+
+//     RateLimiter::for('webhook', fn(Request $request) =>
+//         Limit::perMinute(60)->by($request->ip())
+//     );
+// }
