@@ -24,9 +24,9 @@ class PaymentController extends Controller
 
     public function createIntent(CreateIntentRequest $request, PaymentRetryService $retries)
     {
-        $data   = $request->validated();
-        $order  = Order::where('user_id', auth('api')->id())->findOrFail($data['order_id']);
-        $provider = $data['provider'] ?? config('payment.provider');
+        $data     = $request->validated();
+        $order    = Order::where('user_id', auth('api')->id())->findOrFail($data['order_id']);
+        $provider = $data['provider'] ?? config('payments.default_provider', 'stripe');
 
         // Enforce simple retry policy per order (e.g., max 3 attempts)
         if ($retries->exceededLimit($order->id, 3)) {
@@ -44,15 +44,22 @@ class PaymentController extends Controller
 
         $intent = $gateway->createIntent($order);
 
-        // Persist/append latest Payment row
+        // Normalize provider payment ID for persistence
+        $providerPaymentId = $intent['provider_payment_id']
+            ?? $intent['checkout_id']
+            ?? $intent['tap_transaction_id']
+            ?? $intent['payment_intent']    // if your Stripe gateway returns it later
+            ?? null;
+
+        // Persist latest Payment row
         $payment = Payment::create([
             'order_id'            => $order->id,
             'provider'            => $provider,
-            'provider_payment_id' => $intent['provider_payment_id'] ?? null,
+            'provider_payment_id' => $providerPaymentId,
             'amount'              => $order->total,
             'currency'            => $order->currency ?? 'LBP',
             'status'              => 'pending',
-            'payload'             => $intent,
+            'payload'             => $intent, // keep full gateway payload for the client
         ]);
 
         // Mark the attempt as pending + stash gateway data
@@ -67,52 +74,72 @@ class PaymentController extends Controller
 
     public function webhook(Request $request)
     {
-        // IMPORTANT: protect this route with middleware('verify.payment.webhook')
-        // so only valid signed webhooks pass through.
-
-        $provider = $request->input('provider', config('payment.provider'));
-        $payload  = $request->all();
+        // NOTE: route is protected by middleware('verify.payment.webhook')
+        $payload  = $request->json()->all();
+        $provider = strtolower((string) ($request->header('X-Payment-Provider') ?? ($payload['provider'] ?? '')));
 
         $gateway = match ($provider) {
-            'hyperpay' => new HyperPayGateway(),
+            'stripe'   => new StripeGateway(),
             'tap'      => new TapGateway(),
-            default    => new StripeGateway(),
+            'hyperpay' => new HyperPayGateway(),
+            default    => null,
         };
+        if (!$gateway) {
+            return response()->json(['message' => 'Unknown provider'], 400);
+        }
 
-        $result = $gateway->handleWebhook($payload);
-        // $result => ['status' => 'succeeded|failed|canceled|pending', 'provider_payment_id' => '...']
+        // Normalize provider response (status, provider_payment_id, raw?)
+        $normalized = $gateway->handleWebhook($payload);
 
-        if (!empty($payload['order_id'])) {
-            DB::transaction(function () use ($payload, $result) {
-                /** @var \App\Domain\Payment\Models\Payment|null $payment */
-                $payment = Payment::where('order_id', $payload['order_id'])->latest()->first();
+        // Resolve order id from common places (metadata preferred)
+        $orderId = $payload['metadata']['order_id']
+            ?? $payload['order_id']
+            ?? ($payload['order']['id'] ?? null);
 
-                if ($payment) {
-                    $payment->status = $result['status'];
-                    $payment->provider_payment_id = $result['provider_payment_id'] ?? $payment->provider_payment_id;
-                    $payment->save();
-                }
-
+        if ($orderId) {
+            DB::transaction(function () use ($orderId, $provider, $normalized, $payload) {
                 /** @var \App\Domain\Order\Models\Order|null $order */
-                $order = Order::find($payload['order_id']);
-                if ($order) {
-                    // Simple state machine: mark paid on succeeded
-                    if (($result['status'] ?? null) === 'succeeded' && $order->status === 'pending_payment') {
+                $order = Order::find($orderId);
+                if (!$order) return;
+
+                /** @var \App\Domain\Payment\Models\Payment $payment */
+                $payment = Payment::firstOrCreate(
+                    [
+                        'provider'            => $provider,
+                        'provider_payment_id' => $normalized['provider_payment_id'] ?? null,
+                        'order_id'            => $order->id,
+                    ],
+                    [
+                        'amount'   => $order->total,
+                        'currency' => $order->currency ?? 'LBP',
+                    ]
+                );
+
+                $payment->status = (string) ($normalized['status'] ?? 'processing');
+                // prefer a dedicated meta column if your Payment model has it; fallback to payload
+                if (property_exists($payment, 'meta')) {
+                    $payment->meta = ['raw' => $normalized['raw'] ?? $payload];
+                } else {
+                    $payment->payload = ['raw' => $normalized['raw'] ?? $payload];
+                }
+                $payment->save();
+
+                if (in_array($payment->status, ['succeeded','paid','captured'], true)) {
+                    // mark order paid once, then settle vendors once
+                    if ($order->status !== 'paid') {
                         $order->status = 'paid';
                         $order->save();
-
-                        // Optionally dispatch your existing event:
-                        // event(new \App\Events\OrderStatusUpdated($order));
+                        app(\App\Domain\Finance\Services\SettlementService::class)->settlePaidOrder($order);
                     }
+                }
 
-                    if (($result['status'] ?? null) === 'failed' && $order->status === 'pending_payment') {
-                        $order->status = 'payment_failed';
-                        $order->save();
-                    }
+                if ($payment->status === 'failed' && $order->status === 'pending_payment') {
+                    $order->status = 'payment_failed';
+                    $order->save();
                 }
             });
         }
 
-        return response()->json(['message' => 'Webhook processed']);
+        return response()->json(['ok' => true]);
     }
 }

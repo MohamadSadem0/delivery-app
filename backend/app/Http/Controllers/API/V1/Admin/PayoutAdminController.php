@@ -14,12 +14,14 @@ class PayoutAdminController extends Controller
     public function index(Request $request)
     {
         $q = Payout::query()->orderByDesc('id');
+
         if ($status = $request->string('status')->toString()) {
             $q->where('status', $status);
         }
         if ($store = $request->integer('store_id')) {
             $q->where('store_id', $store);
         }
+
         return response()->json($q->paginate(50));
     }
 
@@ -27,6 +29,7 @@ class PayoutAdminController extends Controller
     {
         $meta = $request->only(['txid','note']);
         $payout = $this->payouts->markPaid($payout, $meta);
+
         return response()->json(['message' => 'Payout marked as paid','payout'=>$payout]);
     }
 }

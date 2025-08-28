@@ -3,57 +3,75 @@
 namespace App\Domain\Payout\Services;
 
 use App\Domain\Payout\Models\Payout;
-use App\Domain\Store\Models\Store;
-use App\Domain\Order\Models\OrderItem;
-use Illuminate\Support\Carbon;
+use App\Domain\Payout\Models\VendorLedgerEntry;
 use Illuminate\Support\Facades\DB;
 
 class PayoutService
 {
-    public function calculateForStore(int $storeId, Carbon $from, Carbon $to): array
-    {
-        // Sum delivered order items for the store in the period
-        $gross = (int) OrderItem::query()
-            ->where('store_id', $storeId)
-            ->whereBetween('created_at', [$from, $to])
-            ->whereHas('order', fn($q) => $q->where('status', 'delivered'))
-            ->sum('line_total');
-
-        $commissionRate = (float) config('payouts.commission_rate', 0.1);
-        $commission = (int) round($gross * $commissionRate);
-        $net = max(0, $gross - $commission);
-
-        return [
-            'gross' => $gross,
-            'commission' => $commission,
-            'net' => $net,
-            'currency' => 'LBP',
-        ];
-    }
-
-    public function createPayout(int $storeId, Carbon $from, Carbon $to): Payout
-    {
-        $calc = $this->calculateForStore($storeId, $from, $to);
-
-        return Payout::create([
-            'store_id' => $storeId,
-            'period_start' => $from,
-            'period_end' => $to,
-            'gross_amount' => $calc['gross'],
-            'commission_amount' => $calc['commission'],
-            'net_amount' => $calc['net'],
-            'currency' => $calc['currency'],
-            'status' => 'pending',
-            'meta' => ['rate' => config('payouts.commission_rate', 0.1)],
-        ]);
-    }
-
+    /**
+     * Mark a payout as paid and create a ledger debit for the vendor.
+     * Idempotent: if the debit already exists, it won't create duplicates.
+     */
     public function markPaid(Payout $payout, array $meta = []): Payout
     {
-        $payout->status = 'paid';
-        $payout->meta = array_merge($payout->meta ?? [], $meta);
-        $payout->save();
+        return DB::transaction(function () use ($payout, $meta) {
+            // Mark payout paid (idempotent)
+            if ($payout->status !== 'paid') {
+                $payout->status  = 'paid';
+                $payout->paid_at = now();
+                $payout->meta    = array_filter(array_merge((array) $payout->meta, $meta));
+                $payout->save();
+            }
 
-        return $payout;
+            // Create a single debit per payout
+            $exists = VendorLedgerEntry::query()
+                ->where('context', 'payout_debit')
+                ->where('store_id', $payout->store_id)
+                ->where('meta->payout_id', $payout->id)
+                ->exists();
+
+            if (!$exists) {
+                VendorLedgerEntry::create([
+                    'store_id' => $payout->store_id,
+                    'order_id' => null,
+                    'refund_id'=> null,
+                    'context'  => 'payout_debit',
+                    'type'     => 'debit',
+                    'amount'   => (int) $payout->amount,
+                    'currency' => $payout->currency ?? 'LBP',
+                    'meta'     => [
+                        'payout_id' => $payout->id,
+                        'note'      => $meta['note'] ?? null,
+                        'txid'      => $meta['txid'] ?? null,
+                    ],
+                ]);
+            }
+
+            return $payout->fresh();
+        });
+    }
+
+    /**
+     * Compute balances for one or more stores.
+     * Returns [credited, debited, available, currency].
+     */
+    public function balancesForStores(array $storeIds, string $currency = 'LBP'): array
+    {
+        $credited = (int) VendorLedgerEntry::query()
+            ->whereIn('store_id', $storeIds)
+            ->where('type', 'credit')
+            ->sum('amount');
+
+        $debited = (int) VendorLedgerEntry::query()
+            ->whereIn('store_id', $storeIds)
+            ->where('type', 'debit')
+            ->sum('amount');
+
+        return [
+            'credited'  => $credited,
+            'debited'   => $debited,
+            'available' => $credited - $debited,
+            'currency'  => $currency,
+        ];
     }
 }

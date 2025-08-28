@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->string('idempotency_key')->nullable();
             $table->unsignedInteger('attempt_no')->default(1);
-            $table->string('status')->default('pending'); // pending|succeeded|failed|canceled
+            $table->string('status')->default('PENDING'); // PENDING|succeeded|failed|canceled
             $table->json('meta')->nullable();
             $table->timestamps();
 

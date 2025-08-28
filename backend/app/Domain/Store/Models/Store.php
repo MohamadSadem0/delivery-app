@@ -12,18 +12,21 @@ class Store extends Model
 {
     protected $table = 'stores';
 
-    protected $fillable = [
-        'user_id','name','slug','description','is_active'
-    ];
+protected $fillable = [
+  'user_id','name','slug','description','is_active',
+  'supports_delivery','supports_pickup','supports_shipping',
+  'commission_rate_bps','section_id',
+];
+
+public function section() { return $this->belongsTo(\App\Domain\Store\Models\Section::class,'section_id'); }
+public function owner()   { return $this->belongsTo(\App\Domain\User\Models\User::class,'user_id'); }
+
 
     protected $casts = [
         'is_active' => 'boolean',
     ];
 
-    public function owner(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+
 
     public function products(): HasMany
     {

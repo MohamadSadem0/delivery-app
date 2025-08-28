@@ -9,10 +9,25 @@ class EnsureVendor
 {
     public function handle(Request $request, Closure $next)
     {
-        $user = auth('api')->user();
-        if (!$user || $user->role !== 'vendor') {
-            return response()->json(['message' => 'Vendor access only'], 403);
+        $user = $request->user('api');
+        if (!$user) {
+            return response()->json(['message' => 'Unauthenticated'], 401);
         }
-        return $next($request);
+
+        // basic role check
+        if (strtolower((string) $user->role) === 'vendor') {
+            return $next($request);
+        }
+
+        // fallback: if role is not explicit, allow if the user owns at least one store
+        $ownsAStore = \App\Domain\Store\Models\Store::query()
+            ->where('user_id', $user->getAuthIdentifier())
+            ->exists();
+
+        if ($ownsAStore) {
+            return $next($request);
+        }
+
+        return response()->json(['message' => 'Forbidden'], 403);
     }
 }

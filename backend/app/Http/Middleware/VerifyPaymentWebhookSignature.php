@@ -4,52 +4,88 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
 
 class VerifyPaymentWebhookSignature
 {
     public function handle(Request $request, Closure $next)
     {
-        // if (app()->environment('local', 'testing')) {
-        //     return $next($request);
-        // }
+        // Allow explicit bypass in non-prod environments
+        if (config('payments.webhooks.skip_verification')) {
+            return $next($request);
+        }
 
-        // $secret = config('services.webhooks.payment_secret', env('PAYMENT_WEBHOOK_SECRET'));
-        // if (!$secret) {
-        //     return response()->json(['message' => 'Webhook secret not configured'], 500);
-        // }
+        $raw = $request->getContent();
+        $payload = json_decode($raw, true) ?? [];
 
-        // $signature = $request->header('X-Signature');
-        // $payload = $request->getContent();
+        // Provider is taken from header first, then JSON body
+        $provider = strtolower((string) ($request->header('X-Payment-Provider') ?? ($payload['provider'] ?? '')));
 
-        // $expected = hash_hmac('sha256', $payload, $secret);
+        if ($provider === '') {
+            Log::warning('Webhook verification failed: missing provider', ['headers' => $request->headers->all()]);
+            abort(400, 'Missing payment provider');
+        }
 
-        // if (!hash_equals($expected, (string)$signature)) {
-        //     // optionally log suspicious activity
-        //     return response()->json(['message' => 'Invalid webhook signature'], 401);
-        // }
+        $ok = match ($provider) {
+            'stripe'   => $this->verifyStripe($request, $raw),
+            'tap'      => $this->verifyGenericHmac($request, $raw, 'tap'),
+            'hyperpay' => $this->verifyGenericHmac($request, $raw, 'hyperpay'),
+            default    => false,
+        };
 
-        // return $next($request);
+        if (!$ok) {
+            Log::warning('Webhook verification failed', [
+                'provider' => $provider,
+                'headers'  => $request->headers->all(),
+                'ip'       => $request->ip(),
+            ]);
+            abort(401, 'Invalid webhook signature');
+        }
 
-        $signature = $request->header('X-Signature');
-$timestamp = (int) $request->header('X-Timestamp'); // seconds epoch
-$skew      = 300; // 5 minutes
+        return $next($request);
+    }
 
-if (!$timestamp || abs(time() - $timestamp) > $skew) {
-    abort(400, 'Stale webhook');
-}
+    private function verifyStripe(Request $request, string $raw): bool
+    {
+        $sigHeader = $request->header('Stripe-Signature');
+        $secret    = (string) config('payments.providers.stripe.webhook_secret');
 
-$provider = $request->route('provider'); // 'stripe', 'paypal', etc
-$secret   = config("payments.providers.$provider.webhook_secret");
+        if (!$sigHeader || $secret === '') {
+            return false;
+        }
 
-if (!$secret) abort(400, 'Unknown provider');
+        // Stripe format: "t=timestamp,v1=hex[,v0=hex...]"
+        $parts = [];
+        foreach (explode(',', $sigHeader) as $pair) {
+            $bits = explode('=', trim($pair), 2);
+            if (count($bits) === 2) {
+                $parts[$bits[0]] = $bits[1];
+            }
+        }
 
-$payload  = $timestamp.'.'.$request->getContent();
-$expected = hash_hmac('sha256', $payload, $secret);
+        $t  = $parts['t']  ?? null;
+        $v1 = $parts['v1'] ?? null;
+        if (!$t || !$v1) return false;
 
-if (!hash_equals($expected, $signature)) {
-    abort(401, 'Invalid signature');
-}
-return $next($request);
+        $signedPayload = $t . '.' . $raw;
+        $computed = hash_hmac('sha256', $signedPayload, $secret);
+
+        // Optional replay protection (5 minutes)
+        if (abs(time() - (int) $t) > 300) return false;
+
+        return hash_equals($v1, $computed);
+    }
+
+    private function verifyGenericHmac(Request $request, string $raw, string $provider): bool
+    {
+        // Accept either provider-specific header or generic X-Signature
+        $sig = $request->header('X-Signature')
+            ?? $request->header(ucfirst($provider) . '-Signature');
+
+        $secret = (string) config("payments.providers.$provider.webhook_secret");
+        if (!$sig || $secret === '') return false;
+
+        $computed = hash_hmac('sha256', $raw, $secret);
+        return hash_equals($sig, $computed);
     }
 }

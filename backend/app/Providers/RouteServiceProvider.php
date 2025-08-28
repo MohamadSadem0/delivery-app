@@ -11,14 +11,20 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
+        // Core public/customer API
         Route::middleware('api')
             ->prefix('api')
             ->group(base_path('routes/api.php'));
 
-        // Separate vendor API group
+        // Vendor API
         Route::middleware('api')
             ->prefix('api')
             ->group(base_path('routes/vendor.php'));
+
+        // Admin API (was not being registered)
+        Route::middleware('api')
+            ->prefix('api')
+            ->group(base_path('routes/admin.php'));
     }
 }
 

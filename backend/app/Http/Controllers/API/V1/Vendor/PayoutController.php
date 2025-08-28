@@ -3,56 +3,85 @@
 namespace App\Http\Controllers\API\V1\Vendor;
 
 use App\Http\Controllers\Controller;
-use App\Domain\Store\Models\Store;
 use App\Domain\Payout\Models\Payout;
 use App\Domain\Payout\Services\PayoutService;
+use App\Domain\Store\Models\Store;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
 class PayoutController extends Controller
 {
     public function __construct(protected PayoutService $payouts) {}
 
-    protected function vendorStoreId(): int
+    protected function vendorStoreIds(): array
     {
-        $store = Store::where('user_id', auth('api')->id())->firstOrFail();
-        return (int) $store->id;
+        $uid = auth('api')->id();
+        return Store::query()->where('user_id', $uid)->pluck('id')->all();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $storeId = $this->vendorStoreId();
-        $payouts = Payout::where('store_id', $storeId)->orderByDesc('id')->paginate(20);
-        return response()->json($payouts);
+        $storeIds = $this->vendorStoreIds();
+        if (empty($storeIds)) {
+            return response()->json(['data' => [], 'meta' => ['message' => 'No store found for vendor']]);
+        }
+
+        $q = Payout::query()->whereIn('store_id', $storeIds)->orderByDesc('id');
+
+        if ($status = $request->string('status')->toString()) {
+            $q->where('status', $status);
+        }
+
+        return response()->json($q->paginate(50));
     }
 
     public function show(Payout $payout)
     {
-        abort_unless($payout->store->user_id === auth('api')->id(), 404);
+        $storeIds = $this->vendorStoreIds();
+        abort_unless(in_array($payout->store_id, $storeIds, true), 404);
         return response()->json($payout);
     }
 
     public function request(Request $request)
     {
-        $storeId = $this->vendorStoreId();
-
         $data = $request->validate([
-            'from' => ['nullable','date'],
-            'to' => ['nullable','date'],
+            'store_id' => ['required','integer'],
+            'amount'   => ['required','integer','min:1'], // minor units
+            'currency' => ['nullable','string','size:3'],
+            'note'     => ['nullable','string','max:500'],
         ]);
 
-        $from = isset($data['from']) ? Carbon::parse($data['from']) : now()->startOfMonth()->subMonth();
-        $to   = isset($data['to']) ? Carbon::parse($data['to']) : now()->startOfMonth()->subSecond();
+        $storeIds = $this->vendorStoreIds();
+        abort_unless(in_array($data['store_id'], $storeIds, true), 404, 'Store not found for vendor');
 
-        $min = (int) config('payouts.min_payout_amount', 0);
+        // current balances
+        $balances = $this->payouts->balancesForStores([$data['store_id']], strtoupper($data['currency'] ?? 'LBP'));
 
-        $calc = $this->payouts->calculateForStore($storeId, $from, $to);
-        if ($calc['net'] < $min) {
-            return response()->json(['message' => 'Payout below minimum threshold','net'=>$calc['net']], 422);
+        // pending payout sum for this store
+        $pending = Payout::query()
+            ->where('store_id', $data['store_id'])
+            ->whereIn('status', ['requested','processing'])
+            ->sum('amount');
+
+        $availableAfterPending = $balances['available'] - (int) $pending;
+
+        if ($data['amount'] > $availableAfterPending) {
+            return response()->json([
+                'message' => 'Requested amount exceeds available funds',
+                'available' => $balances['available'],
+                'pending'   => (int) $pending,
+                'available_after_pending' => $availableAfterPending,
+                'currency'  => $balances['currency'],
+            ], 422);
         }
 
-        $payout = $this->payouts->createPayout($storeId, $from, $to);
+        $payout = Payout::create([
+            'store_id' => $data['store_id'],
+            'amount'   => (int) $data['amount'],
+            'currency' => strtoupper($data['currency'] ?? $balances['currency']),
+            'status'   => 'requested',
+            'meta'     => array_filter(['note' => $data['note'] ?? null]),
+        ]);
 
-        return response()->json(['message' => 'Payout requested','payout'=>$payout], 201);
+        return response()->json(['message' => 'Payout requested', 'payout' => $payout], 201);
     }
 }

@@ -7,18 +7,10 @@ use App\Domain\Catalog\Models\Category;
 use App\Domain\Catalog\Models\Product;
 use App\Http\Resources\Catalog\ProductResource;
 use Illuminate\Http\Request;
-
+use App\Domain\Store\Models\Section;
 class CatalogController extends Controller
 {
-    public function categories(Request $request)
-    {
-        $categories = Category::query()
-            ->where('is_active', true)
-            ->orderBy('name')
-            ->get(['id','name','slug','parent_id']);
 
-        return response()->json(['data' => $categories]);
-    }
 
     public function products(Request $request)
     {
@@ -36,7 +28,19 @@ class CatalogController extends Controller
 
         return ProductResource::collection($products);
     }
+public function categories(Request $request)
+{
+    $q = Category::query()->active();
 
+    if ($request->filled('section_id')) {
+        $q->inSection((int)$request->integer('section_id'));
+    }
+    if ($request->filled('section_slug')) {
+        $q->whereHas('section', fn($qq) => $qq->where('slug', $request->string('section_slug')));
+    }
+
+    return response()->json($q->orderBy('name')->get(['id','section_id','name','slug']));
+}
     public function show(Product $product)
     {
         $product->load('category:id,name,slug');

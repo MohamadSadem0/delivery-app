@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('commission_amount')->default(0);
             $table->unsignedInteger('net_amount')->default(0);
             $table->string('currency', 3)->default('LBP');
-            $table->string('status')->default('pending'); // pending|processing|paid|failed
+            $table->string('status')->default('PENDING'); // pending|processing|paid|failed
             $table->json('meta')->nullable();
             $table->timestamps();
 

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('store_id');
             $table->unsignedInteger('amount');
             $table->string('currency',3)->default('LBP');
-            $table->string('status')->default('pending'); // pending|scheduled|processed|failed
+            $table->string('status')->default('PENDING'); // pending|scheduled|processed|failed
             $table->timestamp('scheduled_at')->nullable();
             $table->timestamp('processed_at')->nullable();
             $table->json('meta')->nullable();

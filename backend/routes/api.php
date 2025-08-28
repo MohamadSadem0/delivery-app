@@ -10,29 +10,29 @@ use App\Http\Controllers\API\V1\OrderController;
 use App\Http\Controllers\API\V1\CartController;
 use App\Http\Controllers\API\V1\RefundController;
 use App\Http\Controllers\API\V1\HealthCheckController;
+use Illuminate\Http\Request;
 
 
-Route::get('v1/ping', function () {
-    return response()->json(['pong' => true, 'time' => now()->toISOString()]);
-});
-// /api prefix is registered by RouteServiceProvider
 Route::prefix('v1')->group(function () {
-    Route::get('v1/health', HealthCheckController::class);
+    // FIX: no double v1; this is /api/v1/health
+    Route::get('health', HealthCheckController::class);
 
     // Auth (public)
     Route::post('auth/register', [AuthController::class, 'register']);
     Route::post('auth/login', [AuthController::class, 'login']);
-Route::middleware('auth:api')->post('v1/orders/{order}/refunds', [RefundController::class, 'requestRefund']);
+
+Route::post('auth/register/vendor', [AuthController::class, 'registerVendor']);
+Route::post('auth/register/delivery', [AuthController::class, 'registerDelivery']);
 
     // Catalog (public)
     Route::get('catalog/categories', [CatalogController::class, 'categories']);
     Route::get('catalog/products', [CatalogController::class, 'products']);
     Route::get('catalog/products/{product}', [CatalogController::class, 'show']);
 
-    // Search (public) — FIXED path (was mistakenly v1/search inside v1 prefix)
+    // Search (public)
     Route::get('search/products', [SearchController::class, 'products']);
 
-    // Payments — webhook is public but SIGNED
+    // Payments — webhook is public but must be signed
     Route::post('payments/webhook', [PaymentController::class, 'webhook'])
         ->middleware('verify.payment.webhook');
 
@@ -59,5 +59,25 @@ Route::middleware('auth:api')->post('v1/orders/{order}/refunds', [RefundControll
 
         // Coupon preview
         Route::get('coupons/preview', [CouponController::class, 'preview']);
+
+        // Customer Orders (missing before)
+        Route::get('orders', [OrderController::class, 'index']);
+        Route::get('orders/{order}', [OrderController::class, 'show']);
+
+        // Refunds (moved into auth group and fixed path)
+        Route::post('orders/{order}/refunds', [RefundController::class, 'requestRefund']);
+    });
+});
+
+Route::middleware('auth:api')->prefix('v1/admin')->group(function () {
+    Route::get('_whoami', function (Request $request) {
+        $u = auth('api')->user();
+        return response()->json([
+            'guard'     => 'api',
+            'got_user'  => (bool) $u,
+            'id'        => $u?->id,
+            'email'     => $u?->email,
+            'role'      => $u?->role,
+        ]);
     });
 });
