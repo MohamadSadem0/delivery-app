@@ -51,6 +51,13 @@ return [
     */
 
     'channels' => [
+        'webhooks' => [
+            'driver' => 'daily',
+            'path'   => storage_path('logs/webhooks.log'),
+            'level'  => env('LOG_LEVEL', 'info'),
+            'days'   => 14,
+        ],
+
 
         'stack' => [
             'driver' => 'stack',

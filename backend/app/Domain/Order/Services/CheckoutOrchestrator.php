@@ -22,18 +22,26 @@ class CheckoutOrchestrator
      *
      * @return \App\Domain\Order\Models\Order
      */
-    public function run(int $userId, ?int $addressId, ?string $couponCode, ?string $notes = null, ?string $reservationToken = null)
-    {
+    public function run(
+        int $userId,
+        ?int $addressId,
+        ?string $couponCode,
+        ?string $notes = null,
+        ?string $reservationToken = null
+    ) {
         $token = $reservationToken ?: 'resv_' . Str::uuid()->toString();
 
         // Reserve current cart quantities
-        $cart = \App\Domain\Cart\Models\Cart::where('user_id', $userId)->with('items.product')->first();
+        $cart = \App\Domain\Cart\Models\Cart::where('user_id', $userId)
+            ->with('items.product')
+            ->first();
+
         if (!$cart || $cart->items->isEmpty()) {
             throw new RuntimeException('Cart is empty');
         }
 
         foreach ($cart->items as $item) {
-            $ok = $this->reservations->tryReserve($token, (int)$item->product_id, (int)$item->qty, 900);
+            $ok = $this->reservations->tryReserve($token, (int) $item->product_id, (int) $item->qty, 900);
             if (!$ok) {
                 $this->reservations->releaseAll($token);
                 throw new RuntimeException("Insufficient stock for product ID {$item->product_id}");
@@ -46,11 +54,17 @@ class CheckoutOrchestrator
 
             // If coupon used, record redemption
             if ($couponCode) {
-                $coupon = Coupon::where('code', strtoupper(trim($couponCode)))->first();
+                $normCode = strtoupper(trim($couponCode));
+                $coupon = Coupon::where('code', $normCode)->first();
+
                 if ($coupon && $this->redemptions->canUse($coupon, $userId)) {
                     $subtotal = (int) $order->subtotal;
                     $total = (int) $order->total;
-                    $discount = max(0, $subtotal - ($total - (int)$order->delivery_fee));
+                    $delivery = (int) $order->delivery_fee;
+
+                    // discount = (subtotal - (total - delivery))
+                    $discount = max(0, $subtotal - ($total - $delivery));
+
                     $this->redemptions->redeem($coupon, $userId, $order->id, $discount);
                 }
             }

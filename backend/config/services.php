@@ -13,7 +13,10 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
-
+   'webhooks' => [
+        // used by VerifyAndLogPaymentWebhook fallback
+        'payment_secret' => env('PAYMENT_WEBHOOK_SECRET', ''),
+    ],
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

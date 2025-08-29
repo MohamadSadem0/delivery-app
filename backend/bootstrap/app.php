@@ -67,6 +67,7 @@ return Application::configure(basePath: dirname(__DIR__))
             __DIR__ . '/../routes/api.php',
             __DIR__ . '/../routes/vendor.php',
             __DIR__ . '/../routes/admin.php',
+             __DIR__ . '/../routes/webhooks.php'
         ],
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
@@ -79,6 +80,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'idempotency'            => \App\Http\Middleware\Idempotency::class,
             'ensure.vendor'          => \App\Http\Middleware\EnsureVendor::class,
             'ensure.admin'           => \App\Http\Middleware\EnsureAdmin::class,
+            'verify.and.log.webhook' => \App\Http\Middleware\VerifyAndLogPaymentWebhook::class, 
+            'request.id'             => \App\Http\Middleware\RequestId::class,
+            'feature'                => \App\Http\Middleware\CheckFeatureFlag::class,
+            'ip.deny'                => \App\Http\Middleware\IpDenylist::class,
+
              
         ]);
 

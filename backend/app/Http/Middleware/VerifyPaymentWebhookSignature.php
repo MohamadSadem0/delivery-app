@@ -10,7 +10,7 @@ class VerifyPaymentWebhookSignature
 {
     public function handle(Request $request, Closure $next)
     {
-        // Allow explicit bypass in non-prod environments
+        // Preserve legacy behavior: allow explicit bypass if configured
         if (config('payments.webhooks.skip_verification')) {
             return $next($request);
         }
@@ -18,8 +18,12 @@ class VerifyPaymentWebhookSignature
         $raw = $request->getContent();
         $payload = json_decode($raw, true) ?? [];
 
-        // Provider is taken from header first, then JSON body
-        $provider = strtolower((string) ($request->header('X-Payment-Provider') ?? ($payload['provider'] ?? '')));
+        // Provider priority: header → route param → JSON body
+        $provider = strtolower((string) (
+            $request->header('X-Payment-Provider')
+            ?? $request->route('provider')
+            ?? ($payload['provider'] ?? '')
+        ));
 
         if ($provider === '') {
             Log::warning('Webhook verification failed: missing provider', ['headers' => $request->headers->all()]);
@@ -70,17 +74,19 @@ class VerifyPaymentWebhookSignature
         $signedPayload = $t . '.' . $raw;
         $computed = hash_hmac('sha256', $signedPayload, $secret);
 
-        // Optional replay protection (5 minutes)
-        if (abs(time() - (int) $t) > 300) return false;
+        // Optional replay protection (defaults to 5 minutes)
+        $maxSkew = (int) config('payments.webhooks.max_skew', 300);
+        if ($maxSkew > 0 && abs(time() - (int) $t) > $maxSkew) return false;
 
         return hash_equals($v1, $computed);
     }
 
     private function verifyGenericHmac(Request $request, string $raw, string $provider): bool
     {
-        // Accept either provider-specific header or generic X-Signature
+        // Accept provider-specific header or generic X-Signature (also uppercase variant)
         $sig = $request->header('X-Signature')
-            ?? $request->header(ucfirst($provider) . '-Signature');
+            ?? $request->header(ucfirst($provider) . '-Signature')
+            ?? $request->header(strtoupper($provider) . '-Signature');
 
         $secret = (string) config("payments.providers.$provider.webhook_secret");
         if (!$sig || $secret === '') return false;
