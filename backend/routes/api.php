@@ -11,11 +11,13 @@ use App\Http\Controllers\API\V1\CartController;
 use App\Http\Controllers\API\V1\RefundController;
 use App\Http\Controllers\API\V1\HealthCheckController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\V1\AddressController;
+use App\Http\Controllers\API\V1\ReviewController;
+use App\Http\Controllers\API\V1\DeliveryController;
 
 
 Route::prefix('v1')->group(function () {
-    // FIX: no double v1; this is /api/v1/health
-    Route::get('health', HealthCheckController::class);
+ 
 
     // Auth (public)
     Route::post('auth/register', [AuthController::class, 'register']);
@@ -80,4 +82,21 @@ Route::middleware('auth:api')->prefix('v1/admin')->group(function () {
             'role'      => $u?->role,
         ]);
     });
+});
+
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('addresses', [AddressController::class, 'index']);
+    Route::post('addresses', [AddressController::class, 'store']);
+    Route::patch('addresses/{address}', [AddressController::class, 'update']);   // {address} binds to UserAddress
+    Route::delete('addresses/{address}', [AddressController::class, 'destroy']);
+});
+
+
+Route::middleware(['auth:api'])->group(function () {
+    // Body accepts: product_id or store_id, rating, comment
+    Route::post('reviews', [ReviewController::class, 'store']);
+});
+
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('orders/{order}/delivery/status', [DeliveryController::class, 'status']);
 });

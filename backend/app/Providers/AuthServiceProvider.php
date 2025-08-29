@@ -14,6 +14,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Store::class => StorePolicy::class,
         Product::class => ProductPolicy::class,
+            \App\Domain\Addressing\Models\UserAddress::class => \App\Policies\OwnsResourcePolicy::class,
+
     ];
 
     public function boot(): void

@@ -10,7 +10,10 @@ class RegisterRequest extends FormRequest
     {
         return true;
     }
-
+/**
+ * @bodyParam email string required The user email. Example: user@example.com
+ * @bodyParam password string required The user password (min 8). Example: secret123
+ */
     public function rules(): array
     {
         return [

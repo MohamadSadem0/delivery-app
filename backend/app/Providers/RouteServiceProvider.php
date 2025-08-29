@@ -25,7 +25,10 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('api')
             ->prefix('api')
             ->group(base_path('routes/admin.php'));
+                Route::model('address', \App\Domain\Addressing\Models\UserAddress::class);
+
     }
+    
 }
 
 

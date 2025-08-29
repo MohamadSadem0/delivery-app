@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             VendorDemoSeeder::class,
             DemoCatalogSeeder::class,
+            CurrencyRateSeeder::class,
                 ]);
     }
 }
