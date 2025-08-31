@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Pressable, Switch } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';

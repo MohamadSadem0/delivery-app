@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useMemo, PropsWithChildren } from 'react';
+import * as React from 'react';
+import  { createContext, useContext, useMemo, PropsWithChildren } from 'react';
 import { useColorScheme } from 'react-native';
 import { getTheme, Theme } from '@/theme';
 

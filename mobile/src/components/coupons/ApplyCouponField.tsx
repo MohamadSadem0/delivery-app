@@ -5,6 +5,7 @@ import { useTheme } from '@/providers/ThemeProvider';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { applyCouponThunk, removeCouponThunk } from '@/features/coupons/couponsSlice';
 import { selectAppliedCoupon, selectCouponDiscount } from '@/features/coupons/coupons.selectors';
+import { useState } from 'react';
 
 export default function ApplyCouponField({ contextPayload }: { contextPayload?: any }) {
   const { colors, spacing, radii } = useTheme();
