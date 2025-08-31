@@ -3,7 +3,8 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import AppProviders from '@/providers/AppProviders';
-
+import { configureNotifications } from '@/services/push/notifications.setup';
+import { useNotificationsSubscription } from '@/hooks/useNotificationsSubscription';
 // Keep the splash screen visible while we load resources
 SplashScreen.preventAutoHideAsync().catch(() => {
   /* ignore if it's already hidden */

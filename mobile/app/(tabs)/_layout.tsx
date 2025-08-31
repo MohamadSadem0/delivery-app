@@ -8,6 +8,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="cart" options={{ title: 'Cart' }} />
       <Tabs.Screen name="orders" options={{ title: 'Orders' }} />
       <Tabs.Screen name="account" options={{ title: 'Account' }} />
+      <Tabs.Screen name="notifications" options={{ title: 'Alerts' }} />
     </Tabs>
   );
 }

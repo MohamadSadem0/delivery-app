@@ -1,6 +1,7 @@
 export type Category = {
   id: number;
   name: string;
-  icon?: string | null;
+  iconUrl?: string | null;
+  coverUrl?: string | null;
   parentId?: number | null;
 };

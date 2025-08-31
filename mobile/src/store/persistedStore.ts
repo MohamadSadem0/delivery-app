@@ -5,8 +5,8 @@ import rootReducer from './rootReducer';
 const persistConfig: PersistConfig<ReturnType<typeof rootReducer>> = {
   key: 'root',
   storage: AsyncStorage,
-  version: 1,
-  whitelist: ['app', 'cart', 'favorites'],
+  version: 2,
+  whitelist: ['app', 'cart', 'favorites', 'preferences', 'notifications'],
 };
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -9,6 +9,13 @@ import favorites from '@/features/favorites/favoritesSlice';
 import profile from '@/features/account/profileSlice';
 import addresses from '@/features/addresses/addressesSlice';
 import preferences from '@/features/preferences/preferencesSlice';
+import payments from '@/features/payments/paymentsSlice';
+import tracking from '@/features/orders/trackingSlice';
+import notifications from '@/features/notifications/notificationsSlice';
+import categories from '@/features/categories/categoriesSlice';
+import tags from '@/features/tags/tagsSlice';
+import coupons from '@/features/coupons/couponsSlice';
+import promos from '@/features/promos/promosSlice';
 
 const rootReducer = combineReducers({
   app,
@@ -21,6 +28,13 @@ const rootReducer = combineReducers({
   profile,
   addresses,
   preferences,
+  payments,
+  tracking,
+  notifications,
+  categories,
+  tags,
+  coupons,
+  promos,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
