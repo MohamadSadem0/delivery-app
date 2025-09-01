@@ -1,0 +1,13 @@
+// In boot():
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
+
+RateLimiter::for('api', function ($request) {
+    $user = $request->user('api');
+    if ($user && $user->role === 'admin') {
+        return Limit::perMinute(300)->by($user->id);
+    } elseif ($user && $user->role === 'vendor') {
+        return Limit::perMinute(180)->by($user->id);
+    }
+    return Limit::perMinute(60)->by(optional($user)->id ?: $request->ip());
+});
