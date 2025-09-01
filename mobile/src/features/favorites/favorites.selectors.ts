@@ -1,6 +1,8 @@
 import type { RootState } from '@/store';
 
-export const selectFavProductIds = (s: RootState) => s.favorites.productIds;
-export const selectFavVendorIds = (s: RootState) => s.favorites.vendorIds;
-export const selectIsProductFav = (id: number) => (s: RootState) => s.favorites.productIds.includes(id);
-export const selectIsVendorFav = (id: number) => (s: RootState) => s.favorites.vendorIds.includes(id);
+export const selectFavProducts = (s: RootState) => s.favorites.products.items;
+export const selectFavProductsStatus = (s: RootState) => s.favorites.products.status;
+export const selectFavVendors = (s: RootState) => s.favorites.vendors.items;
+export const selectFavVendorsStatus = (s: RootState) => s.favorites.vendors.status;
+export const selectIsProductFav = (productId: number) => (s: RootState) => s.favorites.products.items.some(p => p.productId === productId);
+export const selectIsVendorFav = (vendorId: number) => (s: RootState) => s.favorites.vendors.items.some(v => v.vendorId === vendorId);

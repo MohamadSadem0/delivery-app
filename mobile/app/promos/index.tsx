@@ -1,1 +1,1 @@
-export { default } from '@/screens/promos/PromoList';
+export { default } from '@/screens/promos/PromoCenter';
