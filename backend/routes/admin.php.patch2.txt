@@ -1,7 +1,0 @@
-// Add:
-use App\Http\Controllers\API\V1\Admin\FinanceDashboardController;
-Route::prefix('v1/admin')->middleware(['auth:api','ensure.admin'])->group(function () {
-    Route::get('finance/summary',[FinanceDashboardController::class,'summary']);
-    Route::get('finance/sales-by-zone',[FinanceDashboardController::class,'salesByZone']);
-    Route::get('finance/top-stores',[FinanceDashboardController::class,'topStores']);
-});

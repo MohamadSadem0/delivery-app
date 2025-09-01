@@ -1,5 +1,0 @@
-// Add:
-// public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-// {
-//     return $this->belongsTo(\App\Domain\User\Models\User::class);
-// }

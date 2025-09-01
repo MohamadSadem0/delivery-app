@@ -1,4 +1,0 @@
-// In AppServiceProvider@boot add:
-use App\Domain\Order\Models\Order;
-use App\Observers\OrderTimelineObserver;
-Order::observe(OrderTimelineObserver::class);

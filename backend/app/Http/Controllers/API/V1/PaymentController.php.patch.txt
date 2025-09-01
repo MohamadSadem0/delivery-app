@@ -1,5 +1,0 @@
-// In webhook():
-// $verifier = new \App\Domain\Payment\Services\PaymentSignatureVerifier();
-// if (!$verifier->verify($payload, $provider, $request->header('X-Signature'))) {
-//     return response()->json(['message'=>'Invalid signature'],403);
-// }

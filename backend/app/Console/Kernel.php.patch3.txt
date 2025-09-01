@@ -1,2 +1,0 @@
-// In schedule():
-// $schedule->command('finance:weekly-report')->weeklyOn(1,'09:00');
