@@ -1,0 +1,2 @@
+// In send():
+// event(new \App\Events\ChatMessageCreated($message));

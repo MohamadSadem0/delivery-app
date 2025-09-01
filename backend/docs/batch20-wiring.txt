@@ -1,0 +1,6 @@
+- Register EventServiceProvider (already default). Ensure it is active in config/app.php.
+- Queue failure emails: Set FINANCE_ADMIN_EMAILS in .env (comma-separated).
+- Add middleware alias in app/Http/Kernel.php:
+    'feature' => \App\Http\Middleware\CheckFeatureFlag::class,
+- Guard a route with a flag, e.g.:
+    Route::middleware(['auth:api','feature:beta_checkout'])->post('v1/checkout-beta', [CheckoutController::class, 'checkout']);

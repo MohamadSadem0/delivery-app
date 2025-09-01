@@ -1,0 +1,8 @@
+// In logging.php 'channels' add:
+'stack' => [
+    'driver' => 'stack',
+    'channels' => ['single'],
+    'tap' => [App\Logging\CustomizeFormatter::class],
+],
+
+// Create app/Logging/CustomizeFormatter.php with request_id support

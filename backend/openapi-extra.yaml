@@ -1,0 +1,44 @@
+paths:
+  /api/v1/orders/{order}/refunds:
+    post:
+      summary: Request a refund
+      parameters:
+        - in: path
+          name: order
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount: { type: integer }
+                reason: { type: string }
+      responses:
+        '201': { description: Refund created }
+  /api/v1/admin/orders/{order}/status:
+    patch:
+      summary: Update order status (admin)
+      parameters:
+        - in: path
+          name: order
+          required: true
+          schema: { type: integer }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                to: { type: string }
+                reason: { type: string }
+      responses:
+        '200': { description: Order status updated }
+  /api/v1/admin/refunds/{refund}/approve:
+    post: { summary: Approve refund, responses: { '200': { description: OK } } }
+  /api/v1/admin/refunds/{refund}/decline:
+    post: { summary: Decline refund, responses: { '200': { description: OK } } }
+  /api/v1/admin/refunds/{refund}/process:
+    post: { summary: Process refund, responses: { '200': { description: OK } } }
