@@ -1,0 +1,4 @@
+// Add inside $policies array:
+use App\Domain\Payment\Models\Refund;
+use App\Domain\Payment\Policies\RefundPolicy;
+Refund::class => RefundPolicy::class,
