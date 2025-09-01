@@ -1,3 +1,0 @@
-// Add:
-// Route::get('audit-logs', [\App\Http\Controllers\API\V1\Admin\AuditLogController::class,'index']);
-// Route::get('audit-logs/{id}', [\App\Http\Controllers\API\V1\Admin\AuditLogController::class,'show']);

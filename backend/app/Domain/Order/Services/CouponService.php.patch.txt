@@ -1,2 +1,0 @@
-// After applying discount in apply(), when order is created in CheckoutService,
-// call recordRedemption($coupon, $userId, $orderId, $discount).

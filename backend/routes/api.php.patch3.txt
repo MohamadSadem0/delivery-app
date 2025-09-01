@@ -1,7 +1,0 @@
-// Vendor statement download
-use App\Http\Controllers\API\V1\Vendor\VendorStatementController;
-Route::middleware(['auth:api','ensure.vendor'])->get('v1/vendor/payouts/{payout}/statement',[VendorStatementController::class,'download']);
-
-// Metrics (public for Prometheus, or protect if needed)
-use App\Http\Controllers\API\V1\MetricsController;
-Route::get('v1/metrics', MetricsController::class);
