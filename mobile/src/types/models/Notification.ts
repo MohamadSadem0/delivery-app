@@ -1,10 +1,16 @@
-export type NotificationType = 'order_status' | 'promotion' | 'system' | 'chat' | 'unknown';
+export type NotificationKind =
+  | 'order_status'     // order status changed
+  | 'promo'            // marketing
+  | 'chat'             // chat message
+  | 'system';          // app/system notice
+
 export type AppNotification = {
-  id: number | string;
+  id: number;
+  kind: NotificationKind;
   title: string;
   body?: string | null;
-  data?: Record<string, any> | null;
-  type?: NotificationType;
-  isRead: boolean;
-  createdAt: string; // ISO
+  image?: string | null;
+  data?: Record<string, any>;
+  read: boolean;
+  createdAt: string;
 };

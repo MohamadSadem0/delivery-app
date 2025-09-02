@@ -1,8 +1,10 @@
 import type { RootState } from '@/store';
-import type { RatingSummary } from './reviews.types';
+import type { ReviewSummary } from '@/types/models/Review';
 
-export const selectVendorReviews = (vendorId: number) => (s: RootState) => s.reviews.byVendor[vendorId]?.list || [];
-export const selectVendorReviewsStatus = (vendorId: number) => (s: RootState) => s.reviews.byVendor[vendorId]?.status || 'idle';
-export const selectVendorRatingSummary = (vendorId: number) => (s: RootState): RatingSummary | null => s.reviews.byVendor[vendorId]?.summary || null;
-export const selectReviewSubmitting = (s: RootState) => s.reviews.submitting;
-export const selectReviewSubmitError = (s: RootState) => s.reviews.submitError || null;
+export const selectProductReviews = (productId: number) => (s: RootState) => s.reviews.product[productId]?.list.items || [];
+export const selectProductReviewsStatus = (productId: number) => (s: RootState) => s.reviews.product[productId]?.list.status || 'idle';
+export const selectProductSummary = (productId: number) => (s: RootState): ReviewSummary | null => s.reviews.product[productId]?.summary.data || null;
+
+export const selectVendorReviews = (vendorId: number) => (s: RootState) => s.reviews.vendor[vendorId]?.list.items || [];
+export const selectVendorReviewsStatus = (vendorId: number) => (s: RootState) => s.reviews.vendor[vendorId]?.list.status || 'idle';
+export const selectVendorSummary = (vendorId: number) => (s: RootState): ReviewSummary | null => s.reviews.vendor[vendorId]?.summary.data || null;

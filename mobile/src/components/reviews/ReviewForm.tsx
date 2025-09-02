@@ -1,34 +1,30 @@
 import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
-import { useTheme } from '@/providers/ThemeProvider';
-import InteractiveStars from '@/components/ratings/InteractiveStars';
-import Button from '@/components/ui/Button';
 import Text from '@/components/ui/Text';
-import { MIN_REVIEW_LEN, MAX_REVIEW_LEN } from '@/constants/review';
+import Button from '@/components/ui/Button';
+import { useTheme } from '@/providers/ThemeProvider';
 
-type Props = { onSubmit: (v: { rating: number; comment: string }) => Promise<void> | void; submitting?: boolean };
+export default function ReviewForm({ onSubmit, initial }: { onSubmit: (v: { rating: 1|2|3|4|5; title?: string; body?: string }) => void; initial?: Partial<{ rating: 1|2|3|4|5; title: string; body: string; }> }) {
+  const { colors, spacing, radii } = useTheme();
+  const [rating, setRating] = useState<1|2|3|4|5>((initial?.rating as any) || 5);
+  const [title, setTitle] = useState(initial?.title || '');
+  const [body, setBody] = useState(initial?.body || '');
 
-export default function ReviewForm({ onSubmit, submitting }: Props) {
-  const { spacing, colors, radii } = useTheme();
-  const [rating, setRating] = useState(5);
-  const [comment, setComment] = useState('');
-
-  const inputStyle = { borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: spacing.md, paddingVertical: spacing.md, borderRadius: radii.md, color: colors.text, minHeight: 100, textAlignVertical: 'top' } as const;
-  const canSubmit = rating >= 1 && comment.trim().length >= MIN_REVIEW_LEN;
+  const input = { borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: radii.md, padding: spacing.md, color: colors.text } as const;
 
   return (
-    <View style={{ gap: spacing.md }}>
-      <InteractiveStars value={rating} onChange={setRating} />
-      <Text muted>Write a review ({MIN_REVIEW_LEN}-{MAX_REVIEW_LEN} chars)</Text>
-      <TextInput
-        placeholder="Your experience..."
-        placeholderTextColor={colors.textMuted}
-        value={comment}
-        onChangeText={(t) => setComment(t.slice(0, MAX_REVIEW_LEN))}
-        style={inputStyle}
-        multiline
-      />
-      <Button title={submitting ? 'Submitting…' : 'Submit review'} onPress={() => onSubmit({ rating, comment: comment.trim() })} disabled={!canSubmit || submitting} />
+    <View style={{ gap: spacing.sm }}>
+      <Text muted>Rating</Text>
+      <View style={{ flexDirection: 'row', gap: 6 }}>
+        {[1,2,3,4,5].map(n => (
+          <Button key={n} title={`${n}`} variant={rating === n ? 'solid' : 'outline'} onPress={() => setRating(n as any)} />
+        ))}
+      </View>
+      <Text muted>Title (optional)</Text>
+      <TextInput value={title} onChangeText={setTitle} placeholder="Short summary" placeholderTextColor={colors.textMuted} style={input} />
+      <Text muted>Review</Text>
+      <TextInput value={body} onChangeText={setBody} placeholder="Share details..." placeholderTextColor={colors.textMuted} style={[input, { minHeight: 96 }]} multiline />
+      <Button title="Submit" onPress={() => onSubmit({ rating, title: title.trim() || undefined, body: body.trim() || undefined })} disabled={rating < 1} />
     </View>
   );
 }

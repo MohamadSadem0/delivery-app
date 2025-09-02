@@ -1,1 +1,1 @@
-export { default } from '@/screens/notifications/Inbox';
+export { default } from '@/screens/notifications/NotificationsInbox';

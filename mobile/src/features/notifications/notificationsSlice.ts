@@ -1,60 +1,77 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { AppNotification } from '@/types/models/Notification';
-import { apiDeleteNotification, apiGetNotification, apiListNotifications, apiMarkAllRead, apiMarkRead, apiRegisterPushToken } from './notifications.api';
+import { apiListNotifications, apiMarkAsRead, apiDeleteNotification, apiRegisterPushToken } from './notifications.api';
 
 type State = {
-  status: 'idle' | 'loading' | 'error';
-  list: AppNotification[];
-  byId: Record<string, AppNotification>;
-  unreadCount: number;
-  error?: string;
-  deviceToken?: string | null;
+  inbox: { items: AppNotification[]; page: number; status: 'idle'|'loading'|'error'; error?: string | null; total?: number };
+  unseen: number;
+  registration: { status: 'idle'|'loading'|'error'|'ok'; error?: string | null };
 };
-const initialState: State = { status: 'idle', list: [], byId: {}, unreadCount: 0, deviceToken: null };
 
-export const fetchNotifications = createAsyncThunk('notifications/fetch', async (_, { rejectWithValue }) => {
-  try { return await apiListNotifications(); } catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
+const initial: State = {
+  inbox: { items: [], page: 1, status: 'idle', total: 0 },
+  unseen: 0,
+  registration: { status: 'idle' }
+};
+
+export const fetchNotifications = createAsyncThunk('notifications/list', async (page = 1, { rejectWithValue }) => {
+  try { return { page, ...(await apiListNotifications(page)) }; }
+  catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
 });
-export const fetchNotificationById = createAsyncThunk('notifications/fetchById', async (id: number, { rejectWithValue }) => {
-  try { return await apiGetNotification(id); } catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
+
+export const markNotificationRead = createAsyncThunk('notifications/markRead', async (id: number, { rejectWithValue }) => {
+  try { return (await apiMarkAsRead(id)).data; }
+  catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
 });
-export const markReadThunk = createAsyncThunk('notifications/markRead', async (id: number | string, { rejectWithValue }) => {
-  try { await apiMarkRead(id); return id; } catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
+
+export const deleteNotification = createAsyncThunk('notifications/delete', async (id: number, { rejectWithValue }) => {
+  try { await apiDeleteNotification(id); return id; }
+  catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
 });
-export const markAllReadThunk = createAsyncThunk('notifications/markAllRead', async (_, { rejectWithValue }) => {
-  try { await apiMarkAllRead(); return true; } catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
-});
-export const deleteNotificationThunk = createAsyncThunk('notifications/delete', async (id: number | string, { rejectWithValue }) => {
-  try { await apiDeleteNotification(id); return id; } catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
-});
-export const registerPushTokenThunk = createAsyncThunk('notifications/registerToken', async (token: string, { rejectWithValue }) => {
-  try { await apiRegisterPushToken(token); return token; } catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
+
+export const registerPushToken = createAsyncThunk('notifications/register', async (payload: { token: string; deviceId: string; platform: 'ios'|'android'|'web' }, { rejectWithValue }) => {
+  try { await apiRegisterPushToken(payload); return true; }
+  catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
 });
 
 const slice = createSlice({
   name: 'notifications',
-  initialState,
+  initialState: initial,
   reducers: {
-    receiveLocal(state, { payload }: { payload: AppNotification }) {
-      const n = payload; const id = String(n.id);
-      state.byId[id] = n; state.list = [n, ...state.list];
-      if (!n.isRead) state.unreadCount += 1;
+    pushReceived(s, a) {
+      const n = a.payload as AppNotification;
+      const exists = s.inbox.items.find(x => x.id === n.id);
+      if (!exists) { s.inbox.items.unshift(n); if (!n.read) s.unseen += 1; }
     },
+    setUnseen(s, a) { s.unseen = a.payload as number; },
+    clearAll(s) { s.inbox.items = []; s.unseen = 0; },
   },
-  extraReducers: b => {
-    b.addCase(fetchNotifications.pending, s => { s.status = 'loading'; s.error = undefined; })
-     .addCase(fetchNotifications.fulfilled, (s, a) => {
-        s.status = 'idle'; const list = a.payload as AppNotification[]; s.list = list; s.byId = {}; let unread = 0;
-        for (const n of list) { const id = String(n.id); s.byId[id] = n; if (!n.isRead) unread += 1; }
-        s.unreadCount = unread;
-      })
-     .addCase(fetchNotifications.rejected, (s, a) => { s.status = 'error'; s.error = String(a.payload || 'Failed to load notifications'); })
-     .addCase(fetchNotificationById.fulfilled, (s, a) => { const n = a.payload as AppNotification; s.byId[String(n.id)] = n; })
-     .addCase(markReadThunk.fulfilled, (s, a) => { const id = String(a.payload as any); const n = s.byId[id]; if (n && !n.isRead) { n.isRead = true; s.unreadCount = Math.max(0, s.unreadCount - 1); } })
-     .addCase(markAllReadThunk.fulfilled, s => { for (const n of s.list) n.isRead = true; s.unreadCount = 0; })
-     .addCase(deleteNotificationThunk.fulfilled, (s, a) => { const id = String(a.payload as any); const n = s.byId[id]; if (n && !n.isRead) s.unreadCount = Math.max(0, s.unreadCount - 1); s.list = s.list.filter(x => String(x.id) != id); delete s.byId[id]; })
-     .addCase(registerPushTokenThunk.fulfilled, (s, a) => { s.deviceToken = a.payload as string; });
-  },
+  extraReducers: (b) => {
+    b.addCase(fetchNotifications.pending, (s) => { s.inbox.status = 'loading'; s.inbox.error = null; });
+    b.addCase(fetchNotifications.fulfilled, (s, a) => {
+      const { page, data, total } = a.payload as any;
+      s.inbox.status = 'idle'; s.inbox.page = page; s.inbox.total = total ?? data.length;
+      s.inbox.items = page > 1 ? [...s.inbox.items, ...data] : data;
+      s.unseen = s.inbox.items.filter(x => !x.read).length;
+    });
+    b.addCase(fetchNotifications.rejected, (s, a) => { s.inbox.status = 'error'; s.inbox.error = String(a.payload || 'Failed'); });
+
+    b.addCase(markNotificationRead.fulfilled, (s, a) => {
+      const upd = a.payload as AppNotification;
+      const i = s.inbox.items.findIndex(x => x.id === upd.id);
+      if (i >= 0) { s.inbox.items[i] = upd; s.unseen = s.inbox.items.filter(x => !x.read).length; }
+    });
+    b.addCase(deleteNotification.fulfilled, (s, a) => {
+      const id = a.payload as number;
+      s.inbox.items = s.inbox.items.filter(x => x.id !== id);
+      s.unseen = s.inbox.items.filter(x => !x.read).length;
+    });
+
+    b.addCase(registerPushToken.pending, (s) => { s.registration.status = 'loading'; s.registration.error = null; });
+    b.addCase(registerPushToken.fulfilled, (s) => { s.registration.status = 'ok'; });
+    b.addCase(registerPushToken.rejected, (s, a) => { s.registration.status = 'error'; s.registration.error = String(a.payload || 'Failed'); });
+  }
 });
-export const { receiveLocal } = slice.actions;
+
+export const { pushReceived, setUnseen, clearAll } = slice.actions;
 export default slice.reducer;

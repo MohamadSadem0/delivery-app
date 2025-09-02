@@ -1,5 +1,9 @@
-export function formatPrice(n: number, currency: 'LBP'|'USD') {
-  const v = Math.round(n);
-  if (currency === 'LBP') return v.toLocaleString('en-LB') + ' LBP';
-  return '$' + (v / 100).toFixed(2); // if backend uses cents for USD
+export function formatPrice(value: number, currency: 'LBP'|'USD' = 'LBP') {
+  if (currency === 'LBP') {
+    // Compact billions/millions format; Lebanon pricing often in LBP
+    if (value >= 1_000_000_000) return `LBP ${(value/1_000_000_000).toFixed(1)}B`;
+    if (value >= 1_000_000) return `LBP ${(value/1_000_000).toFixed(1)}M`;
+    return `LBP ${Math.round(value).toLocaleString('en-LB')}`;
+  }
+  return `$${(value/1).toFixed(2)}`;
 }

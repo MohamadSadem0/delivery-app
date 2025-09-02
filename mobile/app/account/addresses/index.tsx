@@ -1,1 +1,1 @@
-// placeholder
+export { default } from '@/screens/addresses/AddressesHome';
