@@ -1,27 +1,28 @@
-import { axiosInstance } from '@/api/axiosBase';
-import { endpoints } from '@/api/endpoints';
-import type { Credentials, RegisterPayload, AuthUser, AuthTokens } from './auth.types';
+import { httpPost, httpGet } from '@/api/client';  // Use new client API wrapper
+import { endpoints } from '@/api/endpoints';  // Centralized endpoint constants
+import type { Credentials, RegisterPayload, AuthUser, AuthTokens } from '@/api/domains/auth';  // Ensure types are correct
 
+// Login User
 export async function apiLogin(data: Credentials): Promise<{ user: AuthUser; tokens: AuthTokens }> {
-  const res = await axiosInstance.post(endpoints.auth.login, data);
-  return res.data;
+  return httpPost(endpoints.auth.login, data);  // Use httpPost for a cleaner, reusable API call
 }
 
+// Register User
 export async function apiRegister(data: RegisterPayload): Promise<{ user: AuthUser; tokens: AuthTokens }> {
-  const res = await axiosInstance.post(endpoints.auth.register, data);
-  return res.data;
+  return httpPost(endpoints.auth.register, data);
 }
 
+// Get Authenticated User Details (Me)
 export async function apiMe(): Promise<AuthUser> {
-  const res = await axiosInstance.get(endpoints.auth.me);
-  return res.data;
+  return httpGet(endpoints.auth.me);
 }
 
+// Refresh Auth Tokens
 export async function apiRefresh(): Promise<AuthTokens> {
-  const res = await axiosInstance.post(endpoints.auth.refresh);
-  return res.data;
+  return httpPost(endpoints.auth.refresh);  // We continue using httpPost here, as refresh likely needs a body or is a simple POST
 }
 
+// Logout User
 export async function apiLogout(): Promise<void> {
-  await axiosInstance.post(endpoints.auth.logout);
+  return httpPost(endpoints.auth.logout);  // Calling logout through POST to invalidate session
 }

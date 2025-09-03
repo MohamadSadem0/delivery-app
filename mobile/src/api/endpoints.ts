@@ -1,43 +1,46 @@
+// Derived from OpenAPI servers
+export const API_BASE = "http://127.0.0.1:8000";
+
 export const endpoints = {
-  auth: {
-    login: '/auth/login',
-    register: '/auth/register',
-    me: '/auth/me',
-    refresh: '/auth/refresh',
-    logout: '/auth/logout',
+ auth: {
+    login: '/api/v1/auth/login',
+    register: '/api/v1/auth/register',
+    refresh: '/api/v1/auth/refresh',
+    logout: '/api/v1/auth/logout',
+    me: '/api/v1/auth/me',
   },
   catalog: {
-    products: '/products',
-    product: (id: string | number) => `/products/${id}`,
-    categories: '/categories',
+    list: '/api/v1/catalog/products',
+    one: (id: string | number) => `/api/v1/catalog/products/${id}`,
   },
-  vendors: {
-    list: '/vendors',
-    detail: (id: string | number) => `/vendors/${id}`,
-    products: (id: string | number) => `/vendors/${id}/products`,
+  vendor: {
+    products: '/api/v1/vendor/products',
+    product: (id: string | number) => `/api/v1/vendor/products/${id}`,
+    balance: '/api/v1/vendor/balance',
+    ledger: '/api/v1/vendor/ledger',
+    payouts: '/api/v1/vendor/payouts',
+    payout: (id: string | number) => `/api/v1/vendor/payouts/${id}`,
+    payoutStatement: (id: string | number) => `/api/v1/vendor/payouts/${id}/statement`,
   },
   cart: {
-    applyCoupon: '/cart/coupon',
+    root: '/api/v1/cart',
+    items: '/api/v1/cart/items',
   },
   orders: {
-    create: '/orders',
-    list: '/orders',
-    detail: (id: string | number) => `/orders/${id}`,
-    track: (id: string | number) => `/orders/${id}/track`,
+    list: '/api/v1/orders',
+    one: (id: string | number) => `/api/v1/orders/${id}`,
+    refunds: (id: string | number) => `/api/v1/orders/${id}/refunds`,
   },
   addresses: {
-    list: '/addresses',
-    create: '/addresses',
-    update: (id: string | number) => `/addresses/${id}`,
-    delete: (id: string | number) => `/addresses/${id}`,
-  },
-  notifications: {
-    registerToken: '/notifications/register',
-    list: '/notifications',
-    markRead: (id: string | number) => `/notifications/${id}/read`,
+    list: '/api/addresses',
+    one: (id: string | number) => `/api/addresses/${id}`,
   },
   payments: {
-    init: '/payments/init',
-    confirm: '/payments/confirm',
+    intent: '/api/v1/payments/intent',
+    webhook: '/api/v1/payments/webhook',
+    providerWebhook: (provider: string) => `/api/v1/webhooks/payments/${provider}`
   },
+  coupons: {
+    preview: '/api/v1/coupons/preview'
+  }
 } as const;
