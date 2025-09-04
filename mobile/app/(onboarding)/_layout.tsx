@@ -1,2 +1,3 @@
-// app/(onboarding)/_layout.tsx
+﻿// app/(onboarding)/_layout.tsx
 // placeholder only
+

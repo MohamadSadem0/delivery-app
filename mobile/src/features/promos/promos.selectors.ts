@@ -1,4 +1,4 @@
-import type { RootState } from '@/store';
+﻿import type { RootState } from '@/store';
 import type { Coupon } from '@/types/models/Promo';
 
 export const selectGlobalCoupons = (s: RootState): Coupon[] => s.promos.global.items;
@@ -8,3 +8,4 @@ export const selectVendorCouponsStatus = (vendorId: number) => (s: RootState) =>
 export const selectAppliedPromo = (s: RootState) => s.promos.applied || null;
 export const selectApplyingPromo = (s: RootState) => s.promos.applying;
 export const selectApplyPromoError = (s: RootState) => s.promos.applyError || null;
+

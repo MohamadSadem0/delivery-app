@@ -1,4 +1,4 @@
-import * as Notifications from 'expo-notifications';
+﻿import * as Notifications from 'expo-notifications';
 
 export async function scheduleLocal(title: string, body?: string) {
   return Notifications.scheduleNotificationAsync({
@@ -6,3 +6,4 @@ export async function scheduleLocal(title: string, body?: string) {
     trigger: null, // immediate
   });
 }
+

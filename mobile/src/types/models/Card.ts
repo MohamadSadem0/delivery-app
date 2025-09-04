@@ -1,4 +1,4 @@
-export type CardBrand = 'visa' | 'mastercard' | 'amex' | 'discover' | 'unknown';
+﻿export type CardBrand = 'visa' | 'mastercard' | 'amex' | 'discover' | 'unknown';
 
 export type SavedCard = {
   id: string;         // backend id or Stripe payment_method id
@@ -9,3 +9,4 @@ export type SavedCard = {
   holder?: string | null;
   isDefault?: boolean;
 };
+

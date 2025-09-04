@@ -1,4 +1,4 @@
-export type Currency = 'LBP' | 'USD';
+﻿export type Currency = 'LBP' | 'USD';
 
 export type PaymentMethodType = 'card' | 'cash' | 'wallet';
 
@@ -32,3 +32,4 @@ export type WalletTransaction = {
   createdAt: string; // ISO
   status?: 'pending' | 'completed' | 'failed';
 };
+

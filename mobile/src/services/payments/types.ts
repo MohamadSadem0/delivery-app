@@ -1,4 +1,4 @@
-export type CreateIntentPayload = {
+﻿export type CreateIntentPayload = {
   amount: number;
   currency: string; // 'LBP' | 'USD'
   metadata?: Record<string, string | number>;
@@ -14,3 +14,4 @@ export type SaveCardPayload = {
 };
 
 export type ApiOk = { ok: true };
+

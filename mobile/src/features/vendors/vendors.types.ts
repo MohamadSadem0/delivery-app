@@ -1,4 +1,4 @@
-export type VendorQuery = {
+﻿export type VendorQuery = {
   page?: number;
   pageSize?: number;
   q?: string;
@@ -9,3 +9,4 @@ export type VendorQuery = {
   lat?: number;
   lng?: number;
 };
+

@@ -1,4 +1,4 @@
-import { httpPost } from '@/api/client';
+﻿import { httpPost } from '@/api/client';
 import { endpoints } from '@/api/endpoints';
 
 export type PaymentIntentBody = {
@@ -14,3 +14,4 @@ export type PaymentIntent = { clientSecret?: string; redirectUrl?: string; id?: 
 export async function createPaymentIntent(body: PaymentIntentBody): Promise<PaymentIntent> {
   return httpPost(endpoints.payments.intent, body);
 }
+

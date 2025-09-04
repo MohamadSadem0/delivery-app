@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import Button from '@/components/ui/Button';
@@ -19,7 +19,7 @@ export default function AddressesHomeScreen() {
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">My addresses</Text>
       <Button title="Add new address" onPress={() => router.push('/account/addresses/add' as any)} />
-      {status === 'loading' ? <Text>Loading…</Text> : (
+      {status === 'loading' ? <Text>Loadingâ€¦</Text> : (
         <AddressList
           data={items}
           onEdit={(id) => router.push(`/account/addresses/${id}/edit` as any)}
@@ -30,3 +30,5 @@ export default function AddressesHomeScreen() {
     </Screen>
   );
 }
+
+

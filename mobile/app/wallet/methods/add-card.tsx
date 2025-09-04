@@ -1,1 +1,2 @@
-export { default } from '@/screens/wallet/AddCard';
+﻿export { default } from '@/screens/wallet/AddCard';
+

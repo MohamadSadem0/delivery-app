@@ -1,2 +1,3 @@
-// src/types/navigation.d.ts
+﻿// src/types/navigation.d.ts
 // placeholder only
+

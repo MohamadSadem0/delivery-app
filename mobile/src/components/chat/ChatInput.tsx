@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 import Button from '@/components/ui/Button';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -13,7 +13,7 @@ export default function ChatInput({ onSend, disabled }: { onSend: (text: string)
       <TextInput
         value={text}
         onChangeText={setText}
-        placeholder="Message…"
+        placeholder="Messageâ€¦"
         placeholderTextColor={colors.textMuted}
         style={inputStyle}
         multiline
@@ -22,3 +22,5 @@ export default function ChatInput({ onSend, disabled }: { onSend: (text: string)
     </View>
   );
 }
+
+

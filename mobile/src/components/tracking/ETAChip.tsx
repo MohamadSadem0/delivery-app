@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -16,7 +16,9 @@ export default function ETAChip({ etaSeconds, distanceMeters }: { etaSeconds?: n
   const distKm = distanceMeters != null ? (distanceMeters / 1000) : null;
   return (
     <View style={{ position: 'absolute', top: spacing.md, alignSelf: 'center', backgroundColor: colors.card, borderRadius: radii.pill, paddingHorizontal: spacing.md, paddingVertical: spacing.xs, elevation: 3 }}>
-      <Text weight="semiBold">{mins != null ? fmt(mins) : '--'} · {distKm != null ? distKm.toFixed(1) + ' km' : '--'}</Text>
+      <Text weight="semiBold">{mins != null ? fmt(mins) : '--'} Â· {distKm != null ? distKm.toFixed(1) + ' km' : '--'}</Text>
     </View>
   );
 }
+
+

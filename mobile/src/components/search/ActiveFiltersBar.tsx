@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Pressable } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -11,7 +11,7 @@ export default function ActiveFiltersBar({ labels, onClearOne, onClearAll }: { l
       {labels.map((l, i) => (
         <Pressable key={i} onPress={() => onClearOne(l)}>
           <View style={{ paddingVertical: 6, paddingHorizontal: 10, borderRadius: radii.pill, backgroundColor: colors.card }}>
-            <Text>{l} ✕</Text>
+            <Text>{l} âœ•</Text>
           </View>
         </Pressable>
       ))}
@@ -19,3 +19,5 @@ export default function ActiveFiltersBar({ labels, onClearOne, onClearAll }: { l
     </View>
   );
 }
+
+

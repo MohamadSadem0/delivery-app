@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { Review, ReviewSummary } from '@/types/models/Review';
 import { apiListProductReviews, apiGetProductSummary, apiCreateProductReview, apiUpdateProductReview, apiDeleteProductReview } from './productReviews.api';
 import { apiListVendorReviews, apiGetVendorSummary, apiCreateVendorReview, apiUpdateVendorReview, apiDeleteVendorReview } from './vendorReviews.api';
@@ -174,3 +174,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+

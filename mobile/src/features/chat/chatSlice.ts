@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Thread, Message } from '@/types/models/Chat';
 import { apiListThreads, apiListMessages, apiSendMessage, apiCreateThread, apiGetThread } from './chat.api';
 
@@ -123,3 +123,4 @@ const slice = createSlice({
 
 export const { setActiveThread, upsertThread, prependOlderMessages } = slice.actions;
 export default slice.reducer;
+

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { OrderTrackingSnapshot } from '@/types/models/Tracking';
 import { apiGetRoute, apiGetTracking } from './tracking.api';
 
@@ -57,3 +57,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+

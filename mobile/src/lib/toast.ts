@@ -1,4 +1,4 @@
-// Minimal toast facade to avoid UI coupling
+﻿// Minimal toast facade to avoid UI coupling
 type ToastType = 'success'|'error'|'info';
 export const Toast = {
   show(message: string, type: ToastType = 'info') {
@@ -6,3 +6,4 @@ export const Toast = {
     console.log(`[${type.toUpperCase()}]`, message);
   }
 };
+

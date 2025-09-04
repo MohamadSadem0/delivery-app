@@ -1,4 +1,4 @@
-export type CourierLocation = {
+﻿export type CourierLocation = {
   lat: number;
   lng: number;
   bearing?: number | null;
@@ -13,3 +13,4 @@ export type Courier = {
   vehicle?: 'bike' | 'car' | 'scooter' | 'other';
   location?: CourierLocation | null;
 };
+

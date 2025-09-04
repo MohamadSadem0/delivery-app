@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
@@ -18,7 +18,7 @@ export default function OrdersTab() {
   }, [dispatch]);
 
   if (status === 'loading') {
-    return <Screen><Text>Loading…</Text></Screen>;
+    return <Screen><Text>Loadingâ€¦</Text></Screen>;
   }
 
   if (!orders.length) {
@@ -39,3 +39,4 @@ export default function OrdersTab() {
     </Screen>
   );
 }
+

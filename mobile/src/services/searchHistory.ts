@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+﻿import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 
 const K_RECENT = 'recent_searches';
@@ -36,3 +36,4 @@ export function useSavedSearches() {
   const isSaved = (key: string) => items.includes(key);
   return { items, toggle, isSaved };
 }
+

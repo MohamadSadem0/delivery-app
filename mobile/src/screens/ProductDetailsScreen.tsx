@@ -1,2 +1,4 @@
-// src/screens/ProductDetailsScreen.tsx
+﻿// src/screens/ProductDetailsScreen.tsx
 // placeholder only
+
+

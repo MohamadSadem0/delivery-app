@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Coupon, PromoApplication } from '@/types/models/Promo';
 import { apiApplyPromo, apiListGlobalCoupons, apiListVendorCoupons, apiRemovePromo } from './promos.api';
 
@@ -76,3 +76,4 @@ const slice = createSlice({
 
 export const { clearApplied, setApplied } = slice.actions;
 export default slice.reducer;
+

@@ -19,7 +19,7 @@ export function mapCategory(row: any): Category {
   return {
     id: Number(row.id),
     name: String(row.name ?? 'Category'),
-    icon: row.icon ?? null,
     parentId: row.parentId ?? row.parent_id ?? null,
   };
 }
+

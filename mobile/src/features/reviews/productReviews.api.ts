@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { CreateReviewPayload, UpdateReviewPayload, ReviewsResponse, ReviewResponse, SummaryResponse } from './reviews.types';
 
@@ -22,3 +22,4 @@ export async function apiDeleteProductReview(reviewId: number): Promise<{ ok: tr
   const res = await axiosInstance.delete(endpoints.reviews.remove(reviewId));
   return res.data;
 }
+

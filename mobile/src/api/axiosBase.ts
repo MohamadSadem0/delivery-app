@@ -1,4 +1,4 @@
-import axios from 'axios';
+﻿import axios from 'axios';
 import { API_URL } from '@/config';
 import { getToken } from '@/services/storage/secure';
 import { DEFAULT_TIMEOUT_MS } from '@/constants/config';
@@ -24,3 +24,4 @@ axiosInstance.interceptors.response.use(
   res => res,
   err => Promise.reject(err),
 );
+

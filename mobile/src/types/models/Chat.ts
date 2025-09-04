@@ -1,4 +1,4 @@
-export type ChatParticipant = {
+﻿export type ChatParticipant = {
   id: number;
   type: 'user' | 'vendor' | 'driver' | 'support';
   name?: string | null;
@@ -27,3 +27,4 @@ export type Message = {
   attachments?: string[] | null;
   createdAt: string;           // ISO
 };
+

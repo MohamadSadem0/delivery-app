@@ -1,4 +1,4 @@
-import type { AxiosError } from 'axios';
+﻿import type { AxiosError } from 'axios';
 import type { ApiError } from '@/api/types';
 
 /**
@@ -17,3 +17,4 @@ export function toApiError(err: AxiosError): ApiError {
     details: __DEV__ ? err.response?.data : undefined,
   };
 }
+

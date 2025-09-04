@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import { useAppSelector } from '@/store/hooks';
@@ -16,3 +16,5 @@ export default function NotificationDetail() {
     </Screen>
   );
 }
+
+

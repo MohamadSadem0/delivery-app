@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View } from 'react-native';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
@@ -35,3 +35,5 @@ export default function ApplyCoupon() {
     </View>
   );
 }
+
+

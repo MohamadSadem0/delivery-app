@@ -1,4 +1,4 @@
-import * as SecureStore from 'expo-secure-store';
+﻿import * as SecureStore from 'expo-secure-store';
 import { STORAGE_KEYS } from '@/constants/config';
 
 export async function setToken(token: string) {
@@ -20,3 +20,4 @@ export async function getRefreshToken() {
 export async function deleteRefreshToken() {
   await SecureStore.deleteItemAsync(STORAGE_KEYS.refreshToken);
 }
+

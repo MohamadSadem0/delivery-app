@@ -1,2 +1,4 @@
-// src/components/ui/Skeleton.tsx
+﻿// src/components/ui/Skeleton.tsx
 // placeholder only
+
+

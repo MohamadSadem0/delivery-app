@@ -1,2 +1,4 @@
-// src/components/maps/LocationPin.tsx
+﻿// src/components/maps/LocationPin.tsx
 // placeholder only
+
+

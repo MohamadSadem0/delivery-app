@@ -1,4 +1,4 @@
-import { httpGet, httpPost, httpPut, httpDelete } from '@/api/client';
+﻿import { httpGet, httpPost, httpPut, httpDelete } from '@/api/client';
 import { endpoints } from '@/api/endpoints';
 import type { Address, Page, ID } from '@/api/domainTypes';
 
@@ -18,3 +18,4 @@ export async function updateAddress(id: ID, body: Partial<Address>): Promise<Add
 export async function deleteAddress(id: ID): Promise<{ success: boolean }> {
   return httpDelete(endpoints.addresses.one(id));
 }
+

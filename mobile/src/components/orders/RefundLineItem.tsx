@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import Text from '@/components/ui/Text';
 
@@ -6,7 +6,9 @@ export default function RefundLineItem({ label, amount, currency }: { label: str
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 }}>
       <Text>{label}</Text>
-      <Text>−{Math.round(amount)} {currency}</Text>
+      <Text>âˆ’{Math.round(amount)} {currency}</Text>
     </View>
   );
 }
+
+

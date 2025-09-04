@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import { useFormik } from 'formik';
 import { loginSchema } from '@/forms/auth.schemas';
@@ -55,3 +55,4 @@ export default function Login() {
     </Screen>
   );
 }
+

@@ -1,2 +1,4 @@
-// src/screens/SettingsScreen.tsx
+﻿// src/screens/SettingsScreen.tsx
 // placeholder only
+
+

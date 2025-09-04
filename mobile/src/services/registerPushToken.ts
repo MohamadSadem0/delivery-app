@@ -9,6 +9,7 @@ export async function ensureRegisteredForPush() {
   if (status !== 'granted') return false;
   const token = await Notifications.getExpoPushTokenAsync({ projectId: process.env.EXPO_PUBLIC_EAS_PROJECT_ID as string | undefined });
   const deviceId = await getOrCreateDeviceId();
-  store.dispatch(registerPushToken({ token: token.data, deviceId, platform: Platform.OS as any }) as any);
+  store.dispatch((registerPushToken as any)({ token: token.data, deviceId, platform: Platform.OS as any }) as any);
   return true;
 }
+

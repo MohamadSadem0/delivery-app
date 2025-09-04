@@ -1,4 +1,4 @@
-export type ThemeMode = 'system' | 'light' | 'dark';
+﻿export type ThemeMode = 'system' | 'light' | 'dark';
 export type Language = 'en' | 'ar';
 export type Currency = 'LBP' | 'USD';
 
@@ -8,3 +8,4 @@ export type UserPrefs = {
   currency: Currency;
   pushEnabled: boolean;
 };
+

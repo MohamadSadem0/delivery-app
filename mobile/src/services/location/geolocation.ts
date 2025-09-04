@@ -1,4 +1,4 @@
-import * as Location from 'expo-location';
+﻿import * as Location from 'expo-location';
 
 export async function getCurrentLocation() {
   const { status } = await Location.requestForegroundPermissionsAsync();
@@ -6,3 +6,4 @@ export async function getCurrentLocation() {
   const loc = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
   return loc;
 }
+

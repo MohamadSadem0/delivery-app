@@ -40,7 +40,7 @@ const slice = createSlice({
       .addCase(fetchVendors.pending, state => { state.status = 'loading'; state.error = undefined; })
       .addCase(fetchVendors.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.list = action.payload as Vendor[];
+        state.list = ((action.payload as any)?.items ?? []) as Vendor[];
         state.byId = {};
         for (const v of state.list) state.byId[v.id] = v;
       })
@@ -56,3 +56,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+

@@ -1,9 +1,10 @@
-export const SortLabels: Record<string, string> = {
+﻿export const SortLabels: Record<string, string> = {
   relevance: 'Relevance',
-  price_asc: 'Price ↑',
-  price_desc: 'Price ↓',
+  price_asc: 'Price â†‘',
+  price_desc: 'Price â†“',
   rating_desc: 'Top rated',
-  name_asc: 'Name A–Z',
-  name_desc: 'Name Z–A',
+  name_asc: 'Name Aâ€“Z',
+  name_desc: 'Name Zâ€“A',
   distance_asc: 'Closest',
 };
+

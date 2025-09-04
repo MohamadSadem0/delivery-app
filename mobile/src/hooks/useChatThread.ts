@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { ensureThread, getThreadById } from '@/features/chat/chatSlice';
 import { selectThreadById } from '@/features/chat/chat.selectors';
@@ -18,3 +18,4 @@ export function useChatThread(opts: { threadId?: number; orderId?: number; vendo
 
   return thread;
 }
+

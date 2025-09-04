@@ -28,9 +28,9 @@ export default function WalletHome() {
       </View>
 
       <Text style={{ marginTop: spacing.lg }} weight="semiBold">Payment methods</Text>
-      {status === 'loading' ? <Text>Loading…</Text> : methods.map(m => (
+      {status === 'loading' ? <Text>Loadingâ€¦</Text> : methods.map((m: any) => (
         <View key={m.id} style={{ paddingVertical: spacing.md, borderBottomWidth: 1, borderBottomColor: colors.border }}>
-          <Text>{m.type === 'card' ? (m.brand?.toUpperCase() + ' •••• ' + (m.last4 || '')) : (m.label || m.type)}</Text>
+          <Text>{m.type === 'card' ? (m.brand?.toUpperCase() + ' â€¢â€¢â€¢â€¢ ' + (m.last4 || '')) : (m.label || m.type)}</Text>
           <View style={{ flexDirection: 'row', gap: spacing.sm, marginTop: spacing.xs }}>
             {!m.isDefault ? <Button title="Set default" variant="outline" onPress={() => dispatch(setDefaultMethodThunk(m.id))} /> : <Text muted>Default</Text>}
             <Button title="Remove" variant="ghost" onPress={() => dispatch(removeMethodThunk(m.id))} />
@@ -40,3 +40,5 @@ export default function WalletHome() {
     </Screen>
   );
 }
+
+

@@ -20,13 +20,15 @@ export default function ChatRoomScreen() {
   useEffect(() => { if (tid) dispatch(fetchMessages({ threadId: tid, limit: 50 })); }, [dispatch, tid]);
 
   if (!tid) return <Screen><Text>Invalid thread.</Text></Screen>;
-  if (!thread) return <Screen><Text>Loading…</Text></Screen>;
+  if (!thread) return <Screen><Text>Loadingâ€¦</Text></Screen>;
 
   return (
     <Screen>
-      <Text style={{ fontSize: 18, marginBottom: 8 }} weight="semiBold">{thread.participants?.map(p => p.name).filter(Boolean).join(', ') || 'Conversation'}</Text>
+      <Text style={{ fontSize: 18, marginBottom: 8 }} weight="semiBold">{thread.participants?.map((p: any) => p.name).filter(Boolean).join(', ') || 'Conversation'}</Text>
       <MessageList data={list} />
       <ChatInput onSend={(text) => dispatch(sendMessageThunk({ threadId: tid, text }))} disabled={status === 'sending'} />
     </Screen>
   );
 }
+
+

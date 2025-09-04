@@ -1,4 +1,4 @@
-import * as Notifications from 'expo-notifications';
+﻿import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
 export async function requestAndGetPushToken(): Promise<string | null> {
   const settings = await Notifications.getPermissionsAsync();
@@ -9,3 +9,4 @@ export async function requestAndGetPushToken(): Promise<string | null> {
   const token = await Notifications.getExpoPushTokenAsync(projectId ? { projectId } as any : undefined);
   return token.data ?? null;
 }
+

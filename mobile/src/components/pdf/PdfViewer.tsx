@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+﻿import React, { useMemo } from 'react';
 import { Platform, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 import * as WebBrowser from 'expo-web-browser';
@@ -23,3 +23,5 @@ export default function PdfViewer({ uri }: { uri: string }) {
     </View>
   );
 }
+
+

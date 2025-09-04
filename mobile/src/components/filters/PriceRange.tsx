@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -16,8 +16,10 @@ export default function PriceRange({ min, max, onChange }: Props) {
     <View style={{ flexDirection: 'row', gap: spacing.sm, alignItems: 'center' }}>
       <Text>LBP</Text>
       <TextInput keyboardType="number-pad" placeholder="min" placeholderTextColor={colors.textMuted} value={String(minV)} onChangeText={t => { setMinV(t); onChange({ min: t ? Number(t) : null, max: maxV ? Number(maxV) : null }); }} style={inputStyle} />
-      <Text>—</Text>
+      <Text>â€”</Text>
       <TextInput keyboardType="number-pad" placeholder="max" placeholderTextColor={colors.textMuted} value={String(maxV)} onChangeText={t => { setMaxV(t); onChange({ min: minV ? Number(minV) : null, max: t ? Number(t) : null }); }} style={inputStyle} />
     </View>
   );
 }
+
+

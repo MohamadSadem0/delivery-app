@@ -1,2 +1,4 @@
-// src/components/maps/MapViewBox.tsx
+﻿// src/components/maps/MapViewBox.tsx
 // placeholder only
+
+

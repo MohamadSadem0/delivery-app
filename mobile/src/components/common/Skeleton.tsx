@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import { useTheme } from '@/providers/ThemeProvider';
 
@@ -8,3 +8,5 @@ export default function Skeleton({ height = 16, width = '100%', radius, style }:
   const { colors, radii } = useTheme();
   return <View style={[{ height, width, backgroundColor: colors.surface, borderRadius: radius ?? radii.md, opacity: 0.6 }, style]} />;
 }
+
+

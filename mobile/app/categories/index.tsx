@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import CategoryGrid from '@/components/categories/CategoryGrid';
@@ -16,7 +16,8 @@ export default function CategoriesIndex() {
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">Categories</Text>
-      {status === 'loading' ? <Text>Loading…</Text> : <CategoryGrid data={categories} />}
+      {status === 'loading' ? <Text>Loadingâ€¦</Text> : <CategoryGrid data={categories} />}
     </Screen>
   );
 }
+

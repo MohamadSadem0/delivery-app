@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+﻿import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { selectFavVendors } from '@/features/favorites/favorites.selectors';
 import { toggleFavVendor } from '@/features/favorites/favoritesSlice';
 
@@ -12,3 +12,4 @@ export function useFavoriteVendor() {
   };
   return { vendors, isFav, toggle };
 }
+

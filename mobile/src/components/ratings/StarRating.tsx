@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+﻿import React, { memo } from 'react';
 import { View } from 'react-native';
 import Star from './Star';
 
@@ -11,3 +11,5 @@ function _StarRating({ value, size = 16 }: { value: number; size?: number }) {
   );
 }
 export default memo(_StarRating);
+
+

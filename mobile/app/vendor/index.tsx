@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
-import VendorCard from '@/components/vendors/VendorCard';
-import VendorFilterBar from '@/components/vendors/VendorFilterBar';
+import VendorCard from '@/components/vendor/VendorCard';
+import VendorFilterBar from '@/components/vendor/VendorFilterBar';
 import InfiniteList from '@/components/common/InfiniteList';
 import { useAppSelector } from '@/store/hooks';
 import { selectPrefs } from '@/features/preferences/preferences.selectors';
@@ -47,3 +47,4 @@ export default function VendorsList() {
     </Screen>
   );
 }
+

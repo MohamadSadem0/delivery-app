@@ -1,4 +1,4 @@
-import * as Notifications from 'expo-notifications';
+﻿import * as Notifications from 'expo-notifications';
 import { store } from '@/store';
 import { pushReceived } from './notificationsSlice';
 
@@ -26,3 +26,4 @@ export function handleNotificationResponse(response: Notifications.NotificationR
     import('@/features/deeplinks/deepLinks.handlers').then(m => m.navigateFromURL(url));
   }
 }
+

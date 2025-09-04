@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import ProductGrid from '@/components/catalog/ProductGrid';
 import Text from '@/components/ui/Text';
@@ -18,7 +18,8 @@ export default function ProductsScreen() {
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">All products</Text>
-      {status === 'loading' ? <Text>Loading…</Text> : <ProductGrid data={items} />}
+      {status === 'loading' ? <Text>Loadingâ€¦</Text> : <ProductGrid data={items} />}
     </Screen>
   );
 }
+

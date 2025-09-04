@@ -1,4 +1,4 @@
-import type { LatLng } from '@/types/models/Tracking';
+﻿import type { LatLng } from '@/types/models/Tracking';
 
 /** Decode a Google-encoded polyline string to coordinates. */
 export function decodePolyline(encoded: string): LatLng[] {
@@ -17,3 +17,4 @@ export function decodePolyline(encoded: string): LatLng[] {
   }
   return coordinates;
 }
+

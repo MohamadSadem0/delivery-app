@@ -1,4 +1,4 @@
-export type Product = {
+﻿export type Product = {
   id: number;
   name: string;
   description?: string;
@@ -9,3 +9,4 @@ export type Product = {
   categoryIds?: number[];
   stock?: number | null;
 };
+

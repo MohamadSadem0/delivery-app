@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { router } from 'expo-router';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
@@ -12,3 +12,4 @@ export default function NotFound() {
     </Screen>
   );
 }
+

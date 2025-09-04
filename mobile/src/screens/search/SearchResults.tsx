@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import Screen from '@/components/layout/Screen';
 import SearchBar from '@/components/search/SearchBar';
 import SortBar from '@/components/search/SortBar';
@@ -68,3 +68,5 @@ export default function SearchResults() {
     </Screen>
   );
 }
+
+

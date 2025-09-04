@@ -1,6 +1,6 @@
-import { httpPost, httpGet } from '@/api/client';  // Use new client API wrapper
+﻿import { httpPost, httpGet } from '@/api/client';  // Use new client API wrapper
 import { endpoints } from '@/api/endpoints';  // Centralized endpoint constants
-import type { Credentials, RegisterPayload, AuthUser, AuthTokens } from '@/api/domains/auth';  // Ensure types are correct
+import type { Credentials, RegisterPayload, AuthUser, AuthTokens } from '@/features/auth/auth.types';  // Ensure types are correct
 
 // Login User
 export async function apiLogin(data: Credentials): Promise<{ user: AuthUser; tokens: AuthTokens }> {
@@ -26,3 +26,4 @@ export async function apiRefresh(): Promise<AuthTokens> {
 export async function apiLogout(): Promise<void> {
   return httpPost(endpoints.auth.logout);  // Calling logout through POST to invalidate session
 }
+

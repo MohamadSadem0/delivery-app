@@ -14,8 +14,10 @@ export default function FavoriteButton({ productId, vendorId }: Props) {
   const liked = useAppSelector(isProduct ? selectIsProductFav(productId as number) : selectIsVendorFav(vendorId as number));
 
   return (
-    <Pressable onPress={() => isProduct ? dispatch(toggleProductFav(productId as number)) : dispatch(toggleVendorFav(vendorId as number))}>
-      <Text style={{ fontSize: 18 }}>{liked ? '❤️' : '🤍'}</Text>
+    <Pressable onPress={() => isProduct ? dispatch(toggleProductFav((productId as number) as any)) : dispatch(toggleVendorFav((vendorId as number) as any))}>
+      <Text style={{ fontSize: 18 }}>{liked ? 'â¤ï¸' : 'ðŸ¤'}</Text>
     </Pressable>
   );
 }
+
+

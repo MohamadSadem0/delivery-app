@@ -1,4 +1,4 @@
-export type ReviewFlag = {
+﻿export type ReviewFlag = {
 
   id: number;
   reviewId: number;
@@ -6,3 +6,4 @@ export type ReviewFlag = {
   note?: string | null;
   createdAt: string;
 };
+

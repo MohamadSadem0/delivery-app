@@ -1,4 +1,4 @@
-export type Promotion = {
+﻿export type Promotion = {
   id: number;
   title: string;
   subtitle?: string | null;
@@ -9,3 +9,4 @@ export type Promotion = {
   endsAt?: string | null;
   active?: boolean;
 };
+

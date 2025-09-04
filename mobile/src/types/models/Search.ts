@@ -1,4 +1,4 @@
-export type SortKey = 'relevance' | 'price_asc' | 'price_desc' | 'rating_desc' | 'newest';
+﻿export type SortKey = 'relevance' | 'price_asc' | 'price_desc' | 'rating_desc' | 'newest';
 
 export type PriceRange = { min?: number; max?: number; currency?: 'LBP'|'USD' };
 export type StockFilter = 'in_stock' | 'all';
@@ -45,3 +45,4 @@ export type SearchResponse = {
   pageSize: number;
   tookMs?: number;
 };
+

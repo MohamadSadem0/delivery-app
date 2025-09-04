@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocalSearchParams } from 'expo-router';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
-import VendorHeader from '@/components/vendors/VendorHeader';
+import VendorHeader from '@/components/vendor/VendorHeader';
 import ProductGrid from '@/components/catalog/ProductGrid';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchVendorById } from '@/features/vendors/vendorsSlice';

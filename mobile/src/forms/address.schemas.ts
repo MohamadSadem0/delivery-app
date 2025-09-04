@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+﻿import * as Yup from 'yup';
 
 export const addressSchema = Yup.object({
   fullName: Yup.string().min(2).required('Required'),
@@ -8,3 +8,4 @@ export const addressSchema = Yup.object({
   building: Yup.string().optional(),
   notes: Yup.string().optional(),
 });
+

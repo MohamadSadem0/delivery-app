@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+﻿import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { selectFavProducts } from '@/features/favorites/favorites.selectors';
 import { toggleFavProduct } from '@/features/favorites/favoritesSlice';
 
@@ -12,3 +12,4 @@ export function useWishlist() {
   };
   return { products, isFav, toggle };
 }
+

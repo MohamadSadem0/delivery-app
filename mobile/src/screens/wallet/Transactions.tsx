@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import TransactionList from '@/components/wallet/TransactionList';
@@ -17,9 +17,11 @@ export default function TransactionsScreen() {
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">Transactions</Text>
-      {status === 'loading' && !items.length ? <Text>Loading…</Text> : (
+      {status === 'loading' && !items.length ? <Text>Loadingâ€¦</Text> : (
         <TransactionList data={items} onEnd={() => dispatch(fetchTransactions({ page: page + 1, pageSize: 20 }))} />
       )}
     </Screen>
   );
 }
+
+

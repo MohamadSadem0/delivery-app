@@ -1,5 +1,9 @@
-import type { RootState } from '@/store';
+﻿import type { RootState } from "@/store";
 export const selectInbox = (s: RootState) => s.notifications.inbox.items;
 export const selectInboxStatus = (s: RootState) => s.notifications.inbox.status;
 export const selectUnseenCount = (s: RootState) => s.notifications.unseen;
 export const selectRegistrationStatus = (s: RootState) => s.notifications.registration.status;
+
+
+/** added by fix: fallback selector to satisfy Inbox.tsx */
+export const selectNotifications = (s: RootState) => ((s as any)?.notifications?.list?.items ?? []);

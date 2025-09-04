@@ -1,4 +1,4 @@
-export type SortOption =
+﻿export type SortOption =
   | 'relevance'
   | 'price_asc'
   | 'price_desc'
@@ -26,3 +26,4 @@ export type VendorFilters = {
   lat?: number | null;
   lng?: number | null;
 };
+

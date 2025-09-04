@@ -1,4 +1,4 @@
-import type { Coupon } from '@/types/models/Promo';
+﻿import type { Coupon } from '@/types/models/Promo';
 // Normalize or map backend fields here if they differ from our model.
 export function mapCoupon(api: any): Coupon {
   return {
@@ -19,3 +19,4 @@ export function mapCoupon(api: any): Coupon {
     active: Boolean(api.active ?? true),
   };
 }
+

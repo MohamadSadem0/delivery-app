@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import CouponList from '@/components/promos/CouponList';
@@ -17,7 +17,9 @@ export default function PromoCenterScreen() {
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">Promotions</Text>
-      {status === 'loading' ? <Text>Loading…</Text> : <CouponList data={items} onApply={(code) => router.push({ pathname: '/checkout', params: { code } } as any)} />}
+      {status === 'loading' ? <Text>Loadingâ€¦</Text> : <CouponList data={items} onApply={(code) => router.push({ pathname: '/checkout', params: { code } } as any)} />}
     </Screen>
   );
 }
+
+

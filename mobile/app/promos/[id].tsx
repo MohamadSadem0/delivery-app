@@ -3,17 +3,17 @@ import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import { useLocalSearchParams, router } from 'expo-router';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { fetchPromoById } from '@/features/promos/promosSlice';
-import { selectPromoById } from '@/features/promos/promos.selectors';
+import { fetchPromotionById } from '@/features/promotions/promotionsSlice';
+import { selectPromotionById } from '@/features/promotions/promotions.selectors';
 import Button from '@/components/ui/Button';
 
 export default function PromoDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const pid = Number(id);
   const dispatch = useAppDispatch();
-  const item = useAppSelector(selectPromoById(pid));
+  const item = useAppSelector(selectPromotionById(pid));
 
-  useEffect(() => { if (!item && !Number.isNaN(pid)) dispatch(fetchPromoById(pid)); }, [pid, item, dispatch]);
+  useEffect(() => { if (!item && !Number.isNaN(pid)) dispatch(fetchPromotionById(pid)); }, [pid, item, dispatch]);
 
   if (!pid) return <Screen><Text>Invalid promotion.</Text></Screen>;
   if (!item) return <Screen><Text>Loading…</Text></Screen>;

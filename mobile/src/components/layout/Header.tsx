@@ -1,2 +1,4 @@
-// src/components/layout/Header.tsx
+﻿// src/components/layout/Header.tsx
 // placeholder only
+
+

@@ -1,4 +1,4 @@
-// Canonical mobile-side domain models (kept minimal & pragmatic)
+﻿// Canonical mobile-side domain models (kept minimal & pragmatic)
 export type ID = number | string;
 
 export type Money = { amount: number; currency: 'LBP' | 'USD' };
@@ -101,3 +101,4 @@ export type Page<T> = {
   data: T[];
   meta: { page: number; pageSize: number; total: number };
 };
+

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+﻿import { createSlice } from '@reduxjs/toolkit';
 
 type State = { lastUrl?: string | null; lastNavigated?: string | null };
 const initial: State = { lastUrl: null, lastNavigated: null };
@@ -14,3 +14,4 @@ const slice = createSlice({
 
 export const { linkReceived, linkNavigated } = slice.actions;
 export default slice.reducer;
+

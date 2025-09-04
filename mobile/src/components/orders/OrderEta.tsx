@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Text from '@/components/ui/Text';
 import { useAppSelector } from '@/store/hooks';
 import { selectCourierLocation } from '@/features/orders/tracking.selectors';
@@ -9,5 +9,7 @@ export default function OrderEta({ orderId, destination }: { orderId: number; de
   if (!loc || !destination?.lat || !destination?.lng) return null;
   const km = distanceKm({ lat: loc.lat, lng: loc.lng }, { lat: destination.lat!, lng: destination.lng! });
   const eta = computeEtaMinutes(km, loc.speedKmh ?? 25);
-  return <Text>ETA: {eta} min • {km.toFixed(1)} km</Text>;
+  return <Text>ETA: {eta} min â€¢ {km.toFixed(1)} km</Text>;
 }
+
+

@@ -1,2 +1,3 @@
-// app/settings/notifications.tsx
+﻿// app/settings/notifications.tsx
 // placeholder only
+

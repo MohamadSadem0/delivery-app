@@ -1,4 +1,4 @@
-export type LatLng = { latitude: number; longitude: number };
+﻿export type LatLng = { latitude: number; longitude: number };
 export type DriverLocation = LatLng & { heading?: number | null; speedKph?: number | null; updatedAt: string };
 export type Waypoint = LatLng & { type: 'vendor' | 'customer' | 'driver'; label?: string | null };
 
@@ -17,3 +17,4 @@ export type OrderTrackingSnapshot = {
   status?: 'preparing' | 'on_the_way' | 'arriving' | 'delivered' | 'unknown';
   updatedAt: string; // ISO
 };
+

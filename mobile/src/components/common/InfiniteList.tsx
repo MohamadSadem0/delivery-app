@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FlatList, View } from 'react-native';
 
 type Props<T> = {
@@ -26,3 +26,5 @@ export default function InfiniteList<T>({ data, keyExtractor, renderItem, onEndR
     />
   );
 }
+
+

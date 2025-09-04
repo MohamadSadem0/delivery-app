@@ -1,4 +1,4 @@
-import type { AuthUser } from '@/features/auth/auth.types';
+﻿import type { AuthUser } from '@/features/auth/auth.types';
 
 export type LoginResponse = {
   user: AuthUser;
@@ -7,3 +7,4 @@ export type LoginResponse = {
     refreshToken?: string | null;
   };
 };
+

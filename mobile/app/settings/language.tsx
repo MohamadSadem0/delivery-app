@@ -1,2 +1,3 @@
-// app/settings/language.tsx
+﻿// app/settings/language.tsx
 // placeholder only
+

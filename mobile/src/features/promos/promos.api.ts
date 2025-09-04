@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { CouponsResponse, ApplyPromoResponse } from './promos.types';
 
@@ -18,3 +18,4 @@ export async function apiRemovePromo(code: string): Promise<{ ok: true }> {
   const res = await axiosInstance.post(endpoints.promos.remove, { code });
   return res.data;
 }
+

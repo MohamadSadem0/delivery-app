@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Optional WebSocket wrapper if your backend exposes WS for chat.
  * If `wsUrl` is not provided, you can ignore this and use polling in `useChatMessages` hook.
  */
@@ -14,3 +14,4 @@ export function connectChatWS(wsUrl: string, onMessage: (payload: any) => void) 
 
   return () => { alive = false; try { ws.close(); } catch {} };
 }
+

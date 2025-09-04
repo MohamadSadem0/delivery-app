@@ -1,11 +1,11 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import Text from '@/components/ui/Text';
 
 export default function RatingStars({ value, size = 14 }: { value: number; size?: number }) {
   const full = Math.floor(value);
   const half = value - full >= 0.5;
-  const stars = '★★★★★'.slice(0, full) + (half ? '½' : '');
+  const stars = 'â˜…â˜…â˜…â˜…â˜…'.slice(0, full) + (half ? 'Â½' : '');
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       <Text style={{ fontSize: size }}>{stars}</Text>
@@ -13,3 +13,5 @@ export default function RatingStars({ value, size = 14 }: { value: number; size?
     </View>
   );
 }
+
+

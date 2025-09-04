@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchSearch, setPage, setQ, setSort, setFilters } from '@/features/search/searchSlice';
 import { selectSearchQuery, selectSearchResults, selectSearchStatus } from '@/features/search/search.selectors';
@@ -19,3 +19,4 @@ export function useSearch() {
     setFilters: (f:any) => dispatch(setFilters(f)),
   };
 }
+

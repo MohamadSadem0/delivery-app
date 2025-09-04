@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Pressable, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Text from '@/components/ui/Text';
@@ -23,3 +23,5 @@ export default function NotificationBell() {
     </Pressable>
   );
 }
+
+

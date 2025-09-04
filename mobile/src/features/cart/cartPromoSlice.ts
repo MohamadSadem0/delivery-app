@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { PromoApplication } from '@/types/models/Promo';
 
 type State = { promo: PromoApplication | null };
@@ -15,3 +15,4 @@ const slice = createSlice({
 
 export const { setCartPromo, clearCartPromo } = slice.actions;
 export default slice.reducer;
+

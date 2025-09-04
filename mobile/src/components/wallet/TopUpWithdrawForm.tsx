@@ -10,9 +10,9 @@ export default function TopUpWithdrawForm({ mode, onSubmit, disabled }: { mode: 
   const { colors, spacing, radii } = useTheme();
   const methods = useAppSelector(selectWalletMethods);
   const [amount, setAmount] = useState('');
-  const [methodId, setMethodId] = useState<number | undefined>(methods.find(m => m.isDefault)?.id);
+  const [methodId, setMethodId] = useState<number | undefined>(methods.find((m: any) => m.isDefault)?.id);
   const isTopUp = mode === 'topup';
-  const usable = useMemo(() => methods.filter(m => (isTopUp ? m.type === 'card' : m.type !== 'card')), [isTopUp, methods]);
+  const usable = useMemo(() => methods.filter((m: any) => (isTopUp ? m.type === 'card' : m.type !== 'card')), [isTopUp, methods]);
   const amt = parseFloat(amount || '0');
 
   const input = { borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: spacing.md, paddingVertical: spacing.sm, borderRadius: radii.md, color: colors.text } as const;
@@ -23,9 +23,9 @@ export default function TopUpWithdrawForm({ mode, onSubmit, disabled }: { mode: 
       {isTopUp ? (
         <View>
           <Text muted>Select card</Text>
-          {usable.map(m => (
+          {usable.map((m: any) => (
             <Pressable key={m.id} onPress={() => setMethodId(m.id)} style={{ paddingVertical: spacing.sm }}>
-              <Text>{m.brand?.toUpperCase() || m.label} •••• {m.last4}</Text>
+              <Text>{m.brand?.toUpperCase() || m.label} â€¢â€¢â€¢â€¢ {m.last4}</Text>
               {methodId === m.id ? <Text muted>Selected</Text> : null}
             </Pressable>
           ))}
@@ -35,3 +35,5 @@ export default function TopUpWithdrawForm({ mode, onSubmit, disabled }: { mode: 
     </View>
   );
 }
+
+

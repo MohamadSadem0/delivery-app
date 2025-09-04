@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { CancelReason, CancellationRequest } from '@/types/models/OrderCancel';
 import { apiCancelOrder, apiGetCancelReasons, apiGetCancellation } from './cancel.api';
 
@@ -85,3 +85,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+

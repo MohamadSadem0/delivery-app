@@ -1,8 +1,9 @@
-export function brandToEmoji(brand?: string) {
+﻿export function brandToEmoji(brand?: string) {
   switch ((brand || '').toLowerCase()) {
-    case 'visa': return '💳';
-    case 'mastercard': return '🟠';
-    case 'amex': return '🔷';
-    default: return '💳';
+    case 'visa': return 'ðŸ’³';
+    case 'mastercard': return 'ðŸŸ ';
+    case 'amex': return 'ðŸ”·';
+    default: return 'ðŸ’³';
   }
 }
+

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { SearchQuery, SearchResponse, SortKey, SearchFilters } from '@/types/models/Search';
 import { apiSearchProducts, apiSuggest } from './search.api';
 import { mapSearchResponse } from './search.mappers';
@@ -52,3 +52,4 @@ const slice = createSlice({
 
 export const { setQuery, setQ, setPage, setSort, setFilters, clearFilters, resetSearchState } = slice.actions;
 export default slice.reducer;
+

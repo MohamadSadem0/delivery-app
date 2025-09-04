@@ -1,2 +1,3 @@
-// src/features/payments/providers/stripe.ts
+﻿// src/features/payments/providers/stripe.ts
 // placeholder only
+

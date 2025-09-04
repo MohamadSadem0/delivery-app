@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import SettingRow from '@/components/account/SettingRow';
@@ -21,7 +21,7 @@ export default function AccountHome() {
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">Account</Text>
-      {me ? <Text muted style={{ marginBottom: 8 }}>{me.name} · {me.email}</Text> : <Text>Loading profile…</Text>}
+      {me ? <Text muted style={{ marginBottom: 8 }}>{me.name} Â· {me.email}</Text> : <Text>Loading profileâ€¦</Text>}
 
       <Text weight="semiBold" style={{ marginTop: 12 }}>Preferences</Text>
       <SettingRow label="Theme" value={prefs.theme} onPress={() => dispatch(setTheme(prefs.theme === 'light' ? 'dark' : 'light'))} />
@@ -34,3 +34,4 @@ export default function AccountHome() {
     </Screen>
   );
 }
+

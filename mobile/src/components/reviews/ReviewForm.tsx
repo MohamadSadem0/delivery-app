@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 import Text from '@/components/ui/Text';
 import Button from '@/components/ui/Button';
@@ -28,3 +28,5 @@ export default function ReviewForm({ onSubmit, initial }: { onSubmit: (v: { rati
     </View>
   );
 }
+
+

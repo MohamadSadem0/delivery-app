@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Marker } from 'react-native-maps';
 
 export default function MarkerCourier({ lat, lng, bearing }: { lat: number; lng: number; bearing?: number | null }) {
@@ -13,3 +13,5 @@ export default function MarkerCourier({ lat, lng, bearing }: { lat: number; lng:
     />
   );
 }
+
+

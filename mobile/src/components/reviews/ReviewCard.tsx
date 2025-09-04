@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Image, Pressable } from 'react-native';
 import Text from '@/components/ui/Text';
 import RatingStars from './RatingStars';
@@ -14,7 +14,7 @@ export default function ReviewCard({ item, onEdit, onDelete }: { item: Review; o
       <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
         <RatingStars value={item.rating} />
         <Text muted style={{ marginLeft: spacing.sm }}>{new Date(item.createdAt).toLocaleDateString()}</Text>
-        {item.status !== 'published' ? <Text muted style={{ marginLeft: spacing.sm }}>· {item.status}</Text> : null}
+        {item.status !== 'published' ? <Text muted style={{ marginLeft: spacing.sm }}>Â· {item.status}</Text> : null}
       </View>
       {item.title ? <Text weight="semiBold">{item.title}</Text> : null}
       {item.body ? <Text muted style={{ marginTop: 2 }}>{item.body}</Text> : null}
@@ -31,3 +31,5 @@ export default function ReviewCard({ item, onEdit, onDelete }: { item: Review; o
     </View>
   );
 }
+
+

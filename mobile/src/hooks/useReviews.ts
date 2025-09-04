@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+﻿import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { selectProductReviews, selectVendorReviews } from '@/features/reviews/reviews.selectors';
 import { fetchProductReviews, fetchVendorReviews } from '@/features/reviews/reviewsSlice';
 
@@ -15,3 +15,4 @@ export function useVendorReviews(vendorId: number) {
   const refresh = () => dispatch(fetchVendorReviews({ vendorId, page: 1 }) as any);
   return { list, refresh };
 }
+

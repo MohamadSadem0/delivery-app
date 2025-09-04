@@ -1,4 +1,4 @@
-export const typography = {
+﻿export const typography = {
   family: {
     regular: 'Inter',
     semiBold: 'Inter-SemiBold',
@@ -23,3 +23,4 @@ export const typography = {
     semiBold: '600',
   },
 } as const;
+

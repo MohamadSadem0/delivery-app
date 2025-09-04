@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { FavoriteProduct, FavoriteVendor } from '@/types/models/Favorite';
 import { apiAddFavProduct, apiAddFavVendor, apiListFavProducts, apiListFavVendors, apiRemoveFavProduct, apiRemoveFavVendor } from './favorites.api';
 
@@ -83,3 +83,8 @@ const slice = createSlice({
 
 export const { upsertFavProduct, removeFavProductLocal, upsertFavVendor, removeFavVendorLocal } = slice.actions;
 export default slice.reducer;
+
+export { toggleFavProduct as toggleProductFav };
+export { toggleFavVendor as toggleVendorFav };
+
+

@@ -1,4 +1,4 @@
-export function formatLBP(value: number): string {
+﻿export function formatLBP(value: number): string {
   // Lebanese pounds often formatted with thousands separators
   return new Intl.NumberFormat('en-LB', { style: 'currency', currency: 'LBP', maximumFractionDigits: 0 }).format(value);
 }
@@ -12,3 +12,4 @@ export function convert(amount: number, from: 'LBP'|'USD', to: 'LBP'|'USD', rate
   if (from === to) return amount;
   return from === 'USD' ? amount * rateLBPperUSD : amount / rateLBPperUSD;
 }
+

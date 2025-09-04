@@ -1,1 +1,2 @@
-export { default } from '@/screens/wallet/Transactions';
+﻿export { default } from '@/screens/wallet/Transactions';
+

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+﻿import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import RatingBar from './RatingBar';
 import type { ReviewSummary } from '@/types/models/Review';
@@ -11,11 +11,13 @@ export default function RatingDistribution({ summary }: { summary: ReviewSummary
   }), [summary]);
   return (
     <View>
-      <RatingBar label="5★" pct={p[5]} />
-      <RatingBar label="4★" pct={p[4]} />
-      <RatingBar label="3★" pct={p[3]} />
-      <RatingBar label="2★" pct={p[2]} />
-      <RatingBar label="1★" pct={p[1]} />
+      <RatingBar label="5â˜…" pct={p[5]} />
+      <RatingBar label="4â˜…" pct={p[4]} />
+      <RatingBar label="3â˜…" pct={p[3]} />
+      <RatingBar label="2â˜…" pct={p[2]} />
+      <RatingBar label="1â˜…" pct={p[1]} />
     </View>
   );
 }
+
+

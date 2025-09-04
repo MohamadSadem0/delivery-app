@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type {
   AddressListResponse, AddressResponse, CreateAddressPayload, UpdateAddressPayload
@@ -28,3 +28,4 @@ export async function apiSetDefaultAddress(id: number): Promise<{ ok: true }> {
   const res = await axiosInstance.post(endpoints.addresses.setDefault(id), {});
   return res.data;
 }
+

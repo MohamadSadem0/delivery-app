@@ -1,4 +1,4 @@
-import { setToken, getToken, deleteToken, setRefreshToken, getRefreshToken, deleteRefreshToken } from '@/services/storage/secure';
+﻿import { setToken, getToken, deleteToken, setRefreshToken, getRefreshToken, deleteRefreshToken } from '@/services/storage/secure';
 import type { AuthTokens } from './auth.types';
 
 export async function saveTokens(tokens: AuthTokens) {
@@ -20,3 +20,4 @@ export async function clearTokens() {
   await deleteToken();
   await deleteRefreshToken();
 }
+

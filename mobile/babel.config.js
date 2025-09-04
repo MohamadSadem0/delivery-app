@@ -11,13 +11,14 @@ module.exports = function (api) {
           alias: {
             '@': './src',
             '@theme': './src/theme',
-            '@assets': './assets'
-          }
-        }
+            '@assets': './assets',
+          },
+        },
       ],
-      'expo-router/babel',
       // Reanimated plugin MUST be last
-      'react-native-reanimated/plugin'
-    ]
+      'react-native-reanimated/plugin',
+    ],
   };
 };
+
+

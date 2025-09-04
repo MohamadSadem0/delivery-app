@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Screen from '@/components/layout/Screen';
 import SearchBar from '@/components/search/SearchBar';
 import RecentSearches from '@/components/search/RecentSearches';
@@ -15,3 +15,5 @@ export default function SearchHome() {
     </Screen>
   );
 }
+
+

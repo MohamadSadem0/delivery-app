@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import Button from '@/components/ui/Button';
 export default function RecenterButton({ onPress }: { onPress: () => void }) {
@@ -8,3 +8,5 @@ export default function RecenterButton({ onPress }: { onPress: () => void }) {
     </View>
   );
 }
+
+

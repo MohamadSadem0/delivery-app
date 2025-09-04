@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { ThreadsResponse, MessagesResponse, SendMessagePayload } from './chat.types';
 import type { Thread, Message } from '@/types/models/Chat';
@@ -32,3 +32,4 @@ export async function apiMarkRead(threadId: number, lastMessageId: number): Prom
   const res = await axiosInstance.post(endpoints.chat.read(threadId), { lastMessageId });
   return res.data;
 }
+

@@ -1,4 +1,4 @@
-import type { AxiosError } from 'axios';
+﻿import type { AxiosError } from 'axios';
 
 export type ApiError = {
   message: string;
@@ -18,3 +18,4 @@ export function normalizeApiError(e: unknown): ApiError {
   const details = ax?.response?.data ?? undefined;
   return { message, status, code, details };
 }
+

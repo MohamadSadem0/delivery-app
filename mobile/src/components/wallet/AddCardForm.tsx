@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import { View, TextInput } from 'react-native';
 import Button from '@/components/ui/Button';
 import Text from '@/components/ui/Text';
@@ -38,3 +38,5 @@ export default function AddCardForm({ onSubmit, disabled }: { onSubmit: (v: { nu
     </View>
   );
 }
+
+

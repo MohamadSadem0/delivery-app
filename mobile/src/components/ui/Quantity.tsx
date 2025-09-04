@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Pressable } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -32,3 +32,5 @@ export default function Quantity({ value, onChange, min = 1, max = 99 }: Props) 
     </View>
   );
 }
+
+

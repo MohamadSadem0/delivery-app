@@ -13,14 +13,16 @@ export default function OrderTrackingScreen() {
   const { snap, status } = useLiveTracking(id);
 
   if (!id) return <Screen><Text>Invalid order</Text></Screen>;
-  if (!snap || status === 'loading') return <Screen><Text>Loading tracking…</Text></Screen>;
+  if (!snap || status === 'loading') return <Screen><Text>Loading trackingâ€¦</Text></Screen>;
 
   return (
-    <Screen edges={['top']}>
-      <Text style={{ fontSize: 18, marginBottom: 8 }} weight="semiBold">Order #{snap.orderId} — {snap.status || 'On the way'}</Text>
+    <Screen>
+      <Text style={{ fontSize: 18, marginBottom: 8 }} weight="semiBold">Order #{snap.orderId} â€” {snap.status || 'On the way'}</Text>
       <ETAChip etaSeconds={snap.etaSeconds} distanceMeters={snap.distanceMeters} />
       <TrackingMap snap={snap} />
       <RecenterButton onPress={() => { /* fitToCoordinates is handled inside map via effect on props */ }} />
     </Screen>
   );
 }
+
+

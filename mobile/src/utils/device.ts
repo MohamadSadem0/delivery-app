@@ -1,4 +1,4 @@
-import * as SecureStore from 'expo-secure-store';
+﻿import * as SecureStore from 'expo-secure-store';
 import { Platform } from 'react-native';
 
 const KEY = 'device-id';
@@ -11,3 +11,4 @@ export async function getOrCreateDeviceId() {
   }
   return value;
 }
+

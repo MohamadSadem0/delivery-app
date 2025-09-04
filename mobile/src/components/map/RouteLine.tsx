@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Polyline } from 'react-native-maps';
 
 export default function RouteLine({ points }: { points: { lat: number; lng: number }[] }) {
@@ -10,3 +10,5 @@ export default function RouteLine({ points }: { points: { lat: number; lng: numb
     />
   );
 }
+
+

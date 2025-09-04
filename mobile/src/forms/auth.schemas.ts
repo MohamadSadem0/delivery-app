@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+﻿import * as Yup from 'yup';
 
 export const loginSchema = Yup.object({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -14,3 +14,4 @@ export const registerSchema = Yup.object({
     .oneOf([Yup.ref('password')], 'Passwords must match')
     .required('Confirm your password'),
 });
+

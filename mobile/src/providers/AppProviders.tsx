@@ -25,7 +25,7 @@ export default function AppProviders({ children, onReady }: Props) {
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <ThemeProvider>
-              <StatusBar style={barStyle} backgroundColor={backgroundColor} />
+              <StatusBar style={(barStyle as any)} backgroundColor={backgroundColor} />
               {children}
             </ThemeProvider>
           </PersistGate>
@@ -34,3 +34,5 @@ export default function AppProviders({ children, onReady }: Props) {
     </GestureHandlerRootView>
   );
 }
+
+

@@ -1,4 +1,4 @@
-import { httpGet, httpPost, httpDelete, httpPatch } from '@/api/client';
+﻿import { httpGet, httpPost, httpDelete, httpPatch } from '@/api/client';
 import { endpoints } from '@/api/endpoints';
 import type { Cart, ID } from '@/api/domainTypes';
 
@@ -25,3 +25,4 @@ export async function applyCoupon(code: string): Promise<Cart> {
 export async function clearCart(): Promise<{ success: boolean }> {
   return httpDelete(endpoints.cart.root);
 }
+

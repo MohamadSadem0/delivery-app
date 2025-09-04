@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+﻿import React, { PropsWithChildren } from 'react';
 import { SafeAreaView, ViewStyle } from 'react-native';
 import { useTheme } from '@/providers/ThemeProvider';
 
@@ -12,3 +12,5 @@ export default function Screen({ children, style, padded = true }: Props) {
     </SafeAreaView>
   );
 }
+
+

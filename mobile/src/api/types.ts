@@ -1,4 +1,4 @@
-export type Page<T> = {
+﻿export type Page<T> = {
   data: T[];
   meta: { page: number; pageSize: number; total: number };
 };
@@ -14,3 +14,4 @@ export type ApiError = {
   message: string;
   details?: unknown;
 };
+

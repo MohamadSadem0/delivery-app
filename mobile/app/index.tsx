@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { router } from 'expo-router';
 import { useAppSelector } from '@/store/hooks';
 import { selectIsAuthenticated } from '@/features/auth/auth.selectors';
@@ -16,7 +16,8 @@ export default function Index() {
 
   return (
     <Screen padded={false}>
-      <Text>Loading…</Text>
+      <Text>Loadingâ€¦</Text>
     </Screen>
   );
 }
+

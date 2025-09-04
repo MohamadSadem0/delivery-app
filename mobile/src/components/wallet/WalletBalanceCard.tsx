@@ -10,7 +10,7 @@ export default function WalletBalanceCard({ balance, onTopUp, onWithdraw }: { ba
   return (
     <View style={{ backgroundColor: colors.card, borderRadius: radii.xl, padding: spacing.lg, marginBottom: spacing.lg }}>
       <Text muted>Wallet balance</Text>
-      <Text weight="bold" style={{ fontSize: 28 }}>{balance ? Math.round(balance.available).toLocaleString() : '--'} {balance?.currency || ''}</Text>
+      <Text weight="semiBold" style={{ fontSize: 28 }}>{balance ? Math.round(balance.available).toLocaleString() : '--'} {balance?.currency || ''}</Text>
       <View style={{ flexDirection: 'row', gap: spacing.sm, marginTop: spacing.md }}>
         {onTopUp ? <Button title="Top up" onPress={onTopUp} /> : null}
         {onWithdraw ? <Button title="Withdraw" variant="outline" onPress={onWithdraw} /> : null}
@@ -18,3 +18,5 @@ export default function WalletBalanceCard({ balance, onTopUp, onWithdraw }: { ba
     </View>
   );
 }
+
+

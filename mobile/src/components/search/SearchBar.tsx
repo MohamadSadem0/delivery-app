@@ -20,12 +20,12 @@ export default function SearchBar({ autoFocus }: { autoFocus?: boolean }) {
   }, [debounced, dispatch]);
 
   return (
-    <View style={{ padding: spacing.md, backgroundColor: colors.bg }}>
+    <View style={{ padding: spacing.md, backgroundColor: colors.background }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: colors.card, borderRadius: radii.xl, paddingHorizontal: spacing.md }}>
         <Ionicons name="search" size={18} color={colors.textMuted} />
         <TextInput
           autoFocus={autoFocus}
-          placeholder="Search products, vendors, categories…"
+          placeholder="Search products, vendors, categoriesâ€¦"
           placeholderTextColor={colors.textMuted}
           value={value}
           onChangeText={setValue}
@@ -54,3 +54,5 @@ export default function SearchBar({ autoFocus }: { autoFocus?: boolean }) {
     </View>
   );
 }
+
+

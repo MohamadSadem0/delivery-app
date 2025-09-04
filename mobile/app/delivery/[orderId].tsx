@@ -30,7 +30,7 @@ export default function OrderDetailTracking() {
       <View style={{ height: 8 }} />
       <OrderStatusBadge status={order.status} />
       <Divider />
-      <OrderEta orderId={id} destination={{ lat: order.address?.lat, lng: order.address?.lng }} />
+      <OrderEta orderId={id} destination={{ lat: order.address?.latitude, lng: order.address?.longitude }} />
       <Button title="Open map view" onPress={() => router.push(`/delivery/track/map/${id}`)} />
     </Screen>
   );

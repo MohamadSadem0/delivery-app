@@ -1,2 +1,3 @@
-// src/services/analytics/firebase.ts
+﻿// src/services/analytics/firebase.ts
 // placeholder only
+

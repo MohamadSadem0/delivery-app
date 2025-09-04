@@ -1,8 +1,8 @@
-import * as Notifications from 'expo-notifications';
+﻿import * as Notifications from 'expo-notifications';
 import { AppState } from 'react-native';
 import { router } from 'expo-router';
 import type { AppNotification } from '@/types/models/Notification';
-import { receiveLocal } from '@/features/notifications/notificationsSlice';
+import { pushReceived } from '@/features/notifications/notificationsSlice';
 import { store } from '@/store';
 
 let subReceived: Notifications.Subscription | null = null;
@@ -13,15 +13,15 @@ export function startNotificationListeners() {
   subReceived = Notifications.addNotificationReceivedListener((payload) => {
     const data = payload.request.content.data || {};
     const n: AppNotification = {
-      id: String(payload.request.identifier),
+      id: (Number(payload.request.identifier) || Date.now()),
       title: payload.request.content.title || 'Notification',
       body: payload.request.content.body,
       data: data as any,
-      type: (data as any).type || 'unknown',
-      isRead: AppState.currentState === 'active',
+      kind: (data as any).type || 'unknown',
+      read: AppState.currentState === 'active',
       createdAt: new Date().toISOString(),
     };
-    store.dispatch(receiveLocal(n));
+    store.dispatch(pushReceived(n));
   });
   subResponse = Notifications.addNotificationResponseReceivedListener((resp) => {
     const data = resp.notification.request.content.data || {};
@@ -31,3 +31,4 @@ export function startNotificationListeners() {
   });
 }
 export function stopNotificationListeners() { subReceived?.remove(); subReceived = null; subResponse?.remove(); subResponse = null; }
+

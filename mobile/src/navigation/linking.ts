@@ -1,5 +1,4 @@
-import Constants from 'expo-constants';
-import type { LinkingOptions } from 'expo-router';
+﻿import Constants from 'expo-constants';
 import { APP_SCHEME } from '@/constants/config';
 
 /**
@@ -8,7 +7,7 @@ import { APP_SCHEME } from '@/constants/config';
  */
 export const prefixes = [`${APP_SCHEME}://`];
 
-export const linking: LinkingOptions<{}> = {
+export const linking = {
   prefixes,
   config: {
     screens: {
@@ -26,3 +25,4 @@ export const linking: LinkingOptions<{}> = {
     },
   },
 };
+

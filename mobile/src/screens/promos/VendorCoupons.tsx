@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import CouponList from '@/components/promos/CouponList';
@@ -19,7 +19,9 @@ export default function VendorCouponsScreen() {
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">Vendor coupons</Text>
-      {status === 'loading' ? <Text>Loading…</Text> : <CouponList data={items} />}
+      {status === 'loading' ? <Text>Loadingâ€¦</Text> : <CouponList data={items} />}
     </Screen>
   );
 }
+
+

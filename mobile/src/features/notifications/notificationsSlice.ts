@@ -14,22 +14,22 @@ const initial: State = {
   registration: { status: 'idle' }
 };
 
-export const fetchNotifications = createAsyncThunk('notifications/list', async (page = 1, { rejectWithValue }) => {
+export const fetchNotifications = createAsyncThunk<any, number | undefined>('notifications/list', async (page = 1, { rejectWithValue }) => {
   try { return { page, ...(await apiListNotifications(page)) }; }
   catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
 });
 
-export const markNotificationRead = createAsyncThunk('notifications/markRead', async (id: number, { rejectWithValue }) => {
+export const markNotificationRead = createAsyncThunk<any, number>('notifications/markRead', async (id: number, { rejectWithValue }) => {
   try { return (await apiMarkAsRead(id)).data; }
   catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
 });
 
-export const deleteNotification = createAsyncThunk('notifications/delete', async (id: number, { rejectWithValue }) => {
+export const deleteNotification = createAsyncThunk<any, number>('notifications/delete', async (id: number, { rejectWithValue }) => {
   try { await apiDeleteNotification(id); return id; }
   catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
 });
 
-export const registerPushToken = createAsyncThunk('notifications/register', async (payload: { token: string; deviceId: string; platform: 'ios'|'android'|'web' }, { rejectWithValue }) => {
+export const registerPushToken = createAsyncThunk<any, { token: string; deviceId: string; platform: 'ios'|'android'|'web' }>('notifications/register', async (payload: { token: string; deviceId: string; platform: 'ios'|'android'|'web' }, { rejectWithValue }) => {
   try { await apiRegisterPushToken(payload); return true; }
   catch (e: any) { return rejectWithValue(e?.response?.data?.message || e.message); }
 });
@@ -75,3 +75,7 @@ const slice = createSlice({
 
 export const { pushReceived, setUnseen, clearAll } = slice.actions;
 export default slice.reducer;
+
+export { registerPushToken as registerPushTokenThunk };
+
+

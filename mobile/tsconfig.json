@@ -1,28 +1,50 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["ES2021", "DOM"],
+    "lib": [
+      "ES2021",
+      "DOM"
+    ],
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "bundler",
-
     "allowJs": true,
     "checkJs": false,
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@/theme": ["src/theme/index"],
-      "@/theme/*": ["src/theme/*"],
-      "@assets/*": ["assets/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@/theme": [
+        "src/theme/index"
+      ],
+      "@/theme/*": [
+        "src/theme/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ]
     },
-
-    "types": ["react", "react-native", "expo", "expo-router/types", "node"]
+    "types": [
+      "react",
+      "react-native",
+      "expo",
+      "expo-router/types",
+      "node"
+    ]
   },
-  "include": ["app", "src", "index.ts", "index.tsx", "expo-env.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "app",
+    "src",
+    "index.ts",
+    "index.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "extends": "expo/tsconfig.base"
 }

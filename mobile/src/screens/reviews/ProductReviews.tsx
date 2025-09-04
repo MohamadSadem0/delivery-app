@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import RatingStars from '@/components/reviews/RatingStars';
@@ -28,13 +28,13 @@ export default function ProductReviewsScreen() {
       <Text weight="semiBold" style={{ fontSize: 22, marginBottom: 8 }}>Product reviews</Text>
       <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
         <RatingStars value={summary?.avg || 0} size={18} />
-        <Text style={{ marginLeft: 8 }}>{(summary?.avg || 0).toFixed(1)} · {summary?.count || 0} reviews</Text>
+        <Text style={{ marginLeft: 8 }}>{(summary?.avg || 0).toFixed(1)} Â· {summary?.count || 0} reviews</Text>
       </View>
       <RatingDistribution summary={summary} />
       <View style={{ height: 12 }} />
       <ReviewForm onSubmit={(v) => dispatch(createProductReview({ productId, payload: v }) as any)} />
       <View style={{ height: 16 }} />
-      {status === 'loading' && !items.length ? <Text>Loading…</Text> : (
+      {status === 'loading' && !items.length ? <Text>Loadingâ€¦</Text> : (
         <FlatList
           data={items}
           keyExtractor={(x) => String(x.id)}
@@ -47,3 +47,5 @@ export default function ProductReviewsScreen() {
     </Screen>
   );
 }
+
+

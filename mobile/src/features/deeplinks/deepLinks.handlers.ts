@@ -1,4 +1,4 @@
-import * as Linking from 'expo-linking';
+﻿import * as Linking from 'expo-linking';
 import { router } from 'expo-router';
 import { DEEP_LINKS } from './deepLinks.config';
 import { LINK_PREFIXES } from '@/constants/deeplinks';
@@ -20,3 +20,4 @@ export function navigateFromURL(url: string) {
 export function createURL(path: string) {
   return Linking.createURL(path, { scheme: LINK_PREFIXES[0].replace('://','') });
 }
+

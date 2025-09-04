@@ -1,4 +1,4 @@
-import { colors as lightColors, darkColors } from './colors';
+﻿import { colors as lightColors, darkColors } from './colors';
 import { spacing } from './spacing';
 import { radii } from './radii';
 import { shadows } from './shadows';
@@ -23,3 +23,4 @@ export const getTheme = (mode: Mode): Theme => ({
   shadows,
   typography,
 });
+

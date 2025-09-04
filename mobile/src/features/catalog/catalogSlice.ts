@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { CatalogState, ProductQuery } from './catalog.types';
 import type { Product } from '@/types/models/Product';
 import type { Category } from '@/types/models/Category';
@@ -77,3 +77,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+

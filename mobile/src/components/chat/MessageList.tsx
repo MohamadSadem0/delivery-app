@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FlatList, View } from 'react-native';
 import ChatBubble from './ChatBubble';
 import type { Message } from '@/types/models/Chat';
@@ -16,3 +16,5 @@ export default function MessageList({ data, myUserId }: { data: Message[]; myUse
     />
   );
 }
+
+

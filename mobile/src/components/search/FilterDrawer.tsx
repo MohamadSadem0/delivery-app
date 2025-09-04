@@ -9,7 +9,7 @@ export default function FilterDrawer({ visible, onClose, onApply, children }: { 
   const { colors, spacing } = useTheme();
   if (!visible) return null;
   return (
-    <View style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '80%', backgroundColor: colors.bg, shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 10, elevation: 8 }}>
+    <View style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '80%', backgroundColor: colors.background, shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 10, elevation: 8 }}>
       <View style={{ padding: spacing.md, borderBottomWidth: 1, borderBottomColor: colors.border }}>
         <Text weight="semiBold" style={{ fontSize: 18 }}>Filters</Text>
       </View>
@@ -23,3 +23,5 @@ export default function FilterDrawer({ visible, onClose, onApply, children }: { 
     </View>
   );
 }
+
+

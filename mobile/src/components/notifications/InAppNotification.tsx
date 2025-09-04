@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -12,3 +12,5 @@ export default function InAppNotification({ title, body }: { title: string; body
     </View>
   );
 }
+
+

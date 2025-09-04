@@ -13,5 +13,6 @@ export function getNavigationTheme(mode: 'light' | 'dark'): NavTheme {
       border: t.colors.border,
       notification: t.colors.accent,
     },
-  };
+  } as any;
 }
+

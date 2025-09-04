@@ -1,4 +1,4 @@
-export type OrderItem = {
+﻿export type OrderItem = {
   productId: number;
   name: string;
   imageUrl?: string | null;
@@ -6,3 +6,4 @@ export type OrderItem = {
   qty: number;
   currency: string;
 };
+

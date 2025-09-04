@@ -1,2 +1,3 @@
-// scripts/openapi-generate.ts
+﻿// scripts/openapi-generate.ts
 // placeholder only
+

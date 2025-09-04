@@ -1,4 +1,4 @@
-export type CancelReason = {
+﻿export type CancelReason = {
   code: string;          // e.g., 'CHANGE_OF_MIND', 'WRONG_ADDRESS', 'DELAYED'
   label: string;         // human readable
   requiresNote?: boolean;
@@ -14,3 +14,4 @@ export type CancellationRequest = {
   status: 'requested' | 'accepted' | 'rejected';
   refundId?: number | null;
 };
+

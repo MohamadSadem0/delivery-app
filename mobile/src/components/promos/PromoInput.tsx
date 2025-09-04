@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 import Text from '@/components/ui/Text';
 import Button from '@/components/ui/Button';
@@ -25,7 +25,7 @@ export default function PromoInput({ vendorId, cartTotal, deliveryFee, currency 
       <Text weight="semiBold">Promo code</Text>
       {applied ? (
         <View style={{ flexDirection: 'row', gap: spacing.sm, alignItems: 'center' }}>
-          <Text>{applied.label || applied.code} — −{Math.round(applied.amountOff)} {applied.currency}</Text>
+          <Text>{applied.label || applied.code} â€” âˆ’{Math.round(applied.amountOff)} {applied.currency}</Text>
           <Button title="Remove" variant="outline" onPress={() => dispatch(removePromoThunk(applied.code) as any)} />
         </View>
       ) : (
@@ -38,10 +38,12 @@ export default function PromoInput({ vendorId, cartTotal, deliveryFee, currency 
             autoCapitalize="characters"
             style={input}
           />
-          <Button title={applying ? 'Applying…' : 'Apply'} onPress={() => dispatch(applyPromoThunk({ code: code.trim(), vendorId, cartTotal, deliveryFee, currency }) as any)} disabled={!code.trim() || applying} />
+          <Button title={applying ? 'Applyingâ€¦' : 'Apply'} onPress={() => dispatch(applyPromoThunk({ code: code.trim(), vendorId, cartTotal, deliveryFee, currency }) as any)} disabled={!code.trim() || applying} />
         </View>
       )}
       {error ? <Text style={{ color: 'red' }}>{error}</Text> : null}
     </View>
   );
 }
+
+

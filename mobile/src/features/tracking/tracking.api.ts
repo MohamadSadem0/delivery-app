@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { OrderTrackingSnapshot } from '@/types/models/Tracking';
 
@@ -11,3 +11,4 @@ export async function apiGetRoute(orderId: number): Promise<{ route: OrderTracki
   const res = await axiosInstance.get(endpoints.tracking.route(orderId));
   return res.data;
 }
+

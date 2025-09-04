@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import Button from '@/components/ui/Button';
@@ -40,11 +40,11 @@ export default function RequestRefundScreen() {
         </View>
         <View>
           <Text muted>Reason</Text>
-          <TextInput value={reason} onChangeText={setReason} placeholder="e.g., Item missing, spoiled, wrong order…" placeholderTextColor={colors.textMuted} style={{ borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: radii.md, padding: spacing.md }} />
+          <TextInput value={reason} onChangeText={setReason} placeholder="e.g., Item missing, spoiled, wrong orderâ€¦" placeholderTextColor={colors.textMuted} style={{ borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: radii.md, padding: spacing.md }} />
         </View>
         <View>
           <Text muted>Extra details (optional)</Text>
-          <TextInput value={note} onChangeText={setNote} placeholder="Describe the issue…" placeholderTextColor={colors.textMuted} style={{ borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: radii.md, padding: spacing.md, minHeight: 88 }} multiline />
+          <TextInput value={note} onChangeText={setNote} placeholder="Describe the issueâ€¦" placeholderTextColor={colors.textMuted} style={{ borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: radii.md, padding: spacing.md, minHeight: 88 }} multiline />
         </View>
         {error ? <Text style={{ color: 'red' }}>{error}</Text> : null}
         <Button title="Submit" onPress={async () => { await dispatch(submitRefund({ orderId: id, amount: amt, currency: currency as any, method, reason, note }) as any); router.back(); }} disabled={!canSubmit || acting} />
@@ -52,3 +52,5 @@ export default function RequestRefundScreen() {
     </Screen>
   );
 }
+
+

@@ -1,4 +1,4 @@
-export type RefundMethod = 'wallet' | 'original' | 'store_credit';
+﻿export type RefundMethod = 'wallet' | 'original' | 'store_credit';
 
 export type RefundStatus = 'requested' | 'approved' | 'rejected' | 'processing' | 'completed';
 
@@ -13,3 +13,4 @@ export type RefundRequest = {
   createdAt: string;
   status: RefundStatus;
 };
+

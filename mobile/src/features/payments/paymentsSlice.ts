@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { SavedCard } from '@/types/models/Card';
 import type { CreateIntentPayload } from '@/services/payments/types';
 import { apiCreatePaymentIntent, apiListSavedCards, apiSaveCard, apiDeleteCard, apiSetDefaultCard } from './payments.api';
@@ -80,3 +80,4 @@ const slice = createSlice({
 
 export const { setMethod } = slice.actions;
 export default slice.reducer;
+

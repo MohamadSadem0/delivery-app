@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+﻿import React, { useMemo } from 'react';
 import { FlatList, View } from 'react-native';
 import ProductCard from './ProductCard';
 import type { Product } from '@/types/models/Product';
@@ -27,3 +27,5 @@ export default function ProductGrid({ data }: Props) {
     />
   );
 }
+
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FlatList } from 'react-native';
 import type { WalletTransaction } from '@/types/models/Payment';
 import TransactionRow from './TransactionRow';
@@ -14,3 +14,5 @@ export default function TransactionList({ data, onEnd }: { data: WalletTransacti
     />
   );
 }
+
+

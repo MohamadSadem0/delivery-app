@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { Coupon } from '@/types/models/Coupon';
 
@@ -21,3 +21,4 @@ export async function apiValidateCoupon(code: string): Promise<{ valid: boolean;
   const res = await axiosInstance.post(endpoints.coupons.validate, { code });
   return res.data;
 }
+

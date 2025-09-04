@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FlatList } from 'react-native';
 import type { Review } from '@/types/models/Review';
 import ReviewItem from './ReviewItem';
@@ -12,3 +12,5 @@ export default function ReviewList({ data }: { data: Review[] }) {
     />
   );
 }
+
+

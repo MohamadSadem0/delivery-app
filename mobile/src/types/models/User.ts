@@ -1,4 +1,4 @@
-export type User = {
+﻿export type User = {
   id: number;
   name: string;
   email: string;
@@ -7,3 +7,4 @@ export type User = {
   city?: string | null;
   createdAt?: string;
 };
+

@@ -1,4 +1,4 @@
-import type { Middleware } from '@reduxjs/toolkit';
+﻿import type { Middleware } from '@reduxjs/toolkit';
 
 /**
  * Very small analytics middleware.
@@ -14,3 +14,4 @@ const analytics: Middleware = () => next => action => {
 };
 
 export default analytics;
+

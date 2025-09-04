@@ -1,4 +1,4 @@
-export type FavoriteProduct = {
+﻿export type FavoriteProduct = {
   id: number;            // favorite id
   productId: number;
   name: string;
@@ -17,3 +17,4 @@ export type FavoriteVendor = {
   logo?: string | null;
   createdAt: string;
 };
+

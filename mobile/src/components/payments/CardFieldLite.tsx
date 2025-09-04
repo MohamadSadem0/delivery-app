@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -33,3 +33,5 @@ export default function CardFieldLite({ onChange }: Props) {
     </View>
   );
 }
+
+

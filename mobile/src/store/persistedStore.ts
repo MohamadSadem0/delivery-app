@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+﻿import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistReducer, PersistConfig } from 'redux-persist';
 import rootReducer from './rootReducer';
 
@@ -10,3 +10,4 @@ const persistConfig: PersistConfig<ReturnType<typeof rootReducer>> = {
 };
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);
+

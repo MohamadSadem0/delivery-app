@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+﻿import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { applyPromoThunk } from '@/features/promos/promosSlice';
 import { selectAppliedPromo, selectApplyingPromo, selectApplyPromoError } from '@/features/promos/promos.selectors';
 
@@ -14,3 +14,4 @@ export function usePromoApply() {
 
   return { applied, applying, error, apply };
 }
+

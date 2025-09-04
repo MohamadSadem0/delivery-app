@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { Category } from '@/types/models/Category';
 import { apiListCategories, apiGetCategory } from './categories.api';
 
@@ -53,3 +53,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+

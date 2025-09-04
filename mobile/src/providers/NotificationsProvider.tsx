@@ -6,11 +6,7 @@ import { registerPushToken } from '@/features/notifications/notificationsSlice';
 import { handleForegroundNotification, handleNotificationResponse } from '@/features/notifications/notificationHandlers';
 import { getOrCreateDeviceId } from '@/utils/device';
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true, shouldPlaySound: false, shouldSetBadge: false,
-  })
-});
+Notifications.setNotificationHandler({ handleNotification: async () => ({ shouldShowAlert: true, shouldPlaySound: false, shouldSetBadge: false, shouldShowBanner: true, shouldShowList: true }) });
 
 export default function NotificationsProvider({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
@@ -22,7 +18,7 @@ export default function NotificationsProvider({ children }: { children: React.Re
       if (status !== 'granted') return;
       const token = await Notifications.getExpoPushTokenAsync({ projectId: process.env.EXPO_PUBLIC_EAS_PROJECT_ID as string | undefined });
       const deviceId = await getOrCreateDeviceId();
-      dispatch(registerPushToken({ token: token.data, deviceId, platform: Platform.OS as any }) as any);
+      (dispatch as any)(registerPushToken({ token: token.data, deviceId, platform: Platform.OS as any }) as any);
     })();
 
     const sub1 = Notifications.addNotificationReceivedListener(handleForegroundNotification);
@@ -32,3 +28,5 @@ export default function NotificationsProvider({ children }: { children: React.Re
 
   return <>{children}</>;
 }
+
+

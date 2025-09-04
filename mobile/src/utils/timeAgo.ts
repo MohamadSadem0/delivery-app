@@ -1,4 +1,4 @@
-export function timeAgo(iso: string) {
+﻿export function timeAgo(iso: string) {
   const d = new Date(iso).getTime();
   const diff = Math.max(0, Date.now() - d);
   const m = Math.floor(diff / 60000);
@@ -13,3 +13,4 @@ export function timeAgo(iso: string) {
   const years = Math.floor(months / 12);
   return years + 'y ago';
 }
+

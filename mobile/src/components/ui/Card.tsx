@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+﻿import React, { PropsWithChildren } from 'react';
 import { View, ViewStyle } from 'react-native';
 import { useTheme } from '@/providers/ThemeProvider';
 
@@ -22,3 +22,5 @@ export default function Card({ children, style }: Props) {
     </View>
   );
 }
+
+

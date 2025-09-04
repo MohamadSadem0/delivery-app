@@ -1,4 +1,4 @@
-export const shadows = {
+﻿export const shadows = {
   sm: {
     shadowColor: '#000',
     shadowOpacity: 0.08,
@@ -21,3 +21,4 @@ export const shadows = {
     elevation: 8,
   },
 } as const;
+

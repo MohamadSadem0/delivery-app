@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { geocodeReverse, geocodeSearch } from '@/utils/geocode';
 
 type State = {
@@ -34,3 +34,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+

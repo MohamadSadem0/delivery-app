@@ -1,4 +1,4 @@
-export type Vendor = {
+﻿export type Vendor = {
   id: number;
   name: string;
   logoUrl?: string | null;
@@ -7,3 +7,4 @@ export type Vendor = {
   city?: string | null;
   description?: string | null;
 };
+

@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { SearchRequest, SearchResult } from './search.types';
 
@@ -11,3 +11,4 @@ export async function apiSuggest(q: string): Promise<{ data: string[] }> {
   const res = await axiosInstance.get(endpoints.search.suggest, { params: { q } });
   return res.data;
 }
+

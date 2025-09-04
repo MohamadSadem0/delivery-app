@@ -1,4 +1,4 @@
-export type ReviewTarget = { type: 'product'|'vendor'; id: number };
+﻿export type ReviewTarget = { type: 'product'|'vendor'; id: number };
 
 export type Review = {
   id: number;
@@ -22,3 +22,4 @@ export type ReviewSummary = {
   count: number;
   distribution: { 1: number; 2: number; 3: number; 4: number; 5: number };
 };
+

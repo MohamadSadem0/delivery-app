@@ -1,4 +1,4 @@
-export const OrderStatusLabels: Record<string, string> = {
+﻿export const OrderStatusLabels: Record<string, string> = {
   pending: 'Pending',
   confirmed: 'Confirmed',
   preparing: 'Preparing',
@@ -7,3 +7,4 @@ export const OrderStatusLabels: Record<string, string> = {
   cancelled: 'Cancelled',
   refunded: 'Refunded',
 };
+

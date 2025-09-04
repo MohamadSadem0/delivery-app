@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchMessages } from '@/features/chat/chatSlice';
 import { selectMessages, selectMessagesStatus } from '@/features/chat/chat.selectors';
@@ -25,3 +25,4 @@ export function useChatMessages(threadId: number) {
 
   return { list, status };
 }
+

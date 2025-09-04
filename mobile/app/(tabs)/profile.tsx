@@ -1,2 +1,3 @@
-// app/(tabs)/profile.tsx
+﻿// app/(tabs)/profile.tsx
 // placeholder only
+

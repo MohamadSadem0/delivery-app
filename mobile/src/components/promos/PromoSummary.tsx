@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useAppSelector } from '@/store/hooks';
@@ -13,3 +13,5 @@ export default function PromoSummary() {
     </View>
   );
 }
+
+

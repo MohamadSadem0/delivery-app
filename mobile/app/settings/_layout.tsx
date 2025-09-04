@@ -1,2 +1,3 @@
-// app/settings/_layout.tsx
+﻿// app/settings/_layout.tsx
 // placeholder only
+

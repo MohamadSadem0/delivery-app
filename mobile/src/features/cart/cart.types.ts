@@ -1,4 +1,4 @@
-export type CartItem = {
+﻿export type CartItem = {
   productId: number;
   vendorId?: number | null;
   name: string;
@@ -14,3 +14,4 @@ export type CartState = {
   coupon?: { code: string; discountAmount: number } | null;
   deliveryFee: number; // flat for now; can be zone-based later
 };
+

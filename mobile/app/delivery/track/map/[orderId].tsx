@@ -40,7 +40,7 @@ export default function TrackMap() {
   if (loc) points.push({ lat: loc.lat, lng: loc.lng });
 
   return (
-    <Screen edges={['bottom']}>
+    <Screen>
       <View style={{ height: 300, borderRadius: 12, overflow: 'hidden' }}>
         <Map ref={ref} initialCenter={coords ? { latitude: coords.latitude, longitude: coords.longitude } : undefined}>
           {coords ? <MarkerUser lat={coords.latitude} lng={coords.longitude} /> : null}

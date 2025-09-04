@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { CartItem, CartState } from './cart.types';
 
 const initialState: CartState = {
@@ -63,3 +63,4 @@ export const {
 } = slice.actions;
 
 export default slice.reducer;
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import { useTheme } from '@/providers/ThemeProvider';
 import Text from '@/components/ui/Text';
@@ -15,3 +15,5 @@ export default function RatingBar({ label, pct }: { label: string; pct: number }
     </View>
   );
 }
+
+

@@ -1,2 +1,3 @@
-// src/navigation/types.ts
+﻿// src/navigation/types.ts
 // placeholder only
+

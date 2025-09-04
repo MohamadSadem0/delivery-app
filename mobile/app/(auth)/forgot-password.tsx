@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Text from '@/components/ui/Text';
 import Screen from '@/components/layout/Screen';
 
@@ -9,3 +9,4 @@ export default function ForgotPassword() {
     </Screen>
   );
 }
+

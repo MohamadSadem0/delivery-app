@@ -1,4 +1,4 @@
-import type { DeepLink } from './deepLinks.types';
+﻿import type { DeepLink } from './deepLinks.types';
 
 // Add patterns you want to support
 export const DEEP_LINKS: DeepLink[] = [
@@ -8,3 +8,4 @@ export const DEEP_LINKS: DeepLink[] = [
   { name: 'Reviews for product', pattern: /^\/product\/(\d+)\/reviews$/i, to: (p) => `/products/${p[1]}/reviews` },
   { name: 'Cart',    pattern: /^\/cart$/i,             to: () => '/cart' },
 ];
+

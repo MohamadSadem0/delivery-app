@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
@@ -22,7 +22,7 @@ export default function AddressesScreen() {
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">My Addresses</Text>
       <Button title="Add new address" onPress={() => router.push('/account/address-edit')} />
-      {status === 'loading' ? <Text>Loading…</Text> : (
+      {status === 'loading' ? <Text>Loadingâ€¦</Text> : (
         <FlatList
           data={items}
           keyExtractor={(it, idx) => String((it as any).id ?? idx)}
@@ -38,3 +38,4 @@ export default function AddressesScreen() {
     </Screen>
   );
 }
+

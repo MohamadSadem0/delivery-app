@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View } from 'react-native';
 import FilterChip from '@/components/ui/FilterChip';
 import ModalSheet from '@/components/ui/ModalSheet';
@@ -22,8 +22,8 @@ export default function CatalogFilterBar() {
       <ModalSheet visible={open} onClose={() => setOpen(false)}>
         <Text weight="semiBold" style={{ fontSize: 18 }}>Product filters</Text>
         <View style={{ height: spacing.md }} />
-        <Button title="Sort by price ↑" variant="outline" onPress={() => dispatch(setCatalogFilters({ sort: 'price_asc' }))} />
-        <Button title="Sort by price ↓" variant="outline" onPress={() => dispatch(setCatalogFilters({ sort: 'price_desc' }))} />
+        <Button title="Sort by price â†‘" variant="outline" onPress={() => dispatch(setCatalogFilters({ sort: 'price_asc' }))} />
+        <Button title="Sort by price â†“" variant="outline" onPress={() => dispatch(setCatalogFilters({ sort: 'price_desc' }))} />
         <Button title="Sort by rating" variant="outline" onPress={() => dispatch(setCatalogFilters({ sort: 'rating_desc' }))} />
         <View style={{ height: spacing.sm }} />
         <Button title="Close" onPress={() => setOpen(false)} />
@@ -31,3 +31,5 @@ export default function CatalogFilterBar() {
     </>
   );
 }
+
+

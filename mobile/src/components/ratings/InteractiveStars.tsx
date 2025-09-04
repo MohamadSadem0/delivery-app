@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Pressable } from 'react-native';
 import Star from './Star';
 
@@ -11,3 +11,5 @@ export default function InteractiveStars({ value, onChange, size = 22 }: { value
     </View>
   );
 }
+
+

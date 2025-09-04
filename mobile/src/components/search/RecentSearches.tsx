@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Pressable } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -26,3 +26,5 @@ export default function RecentSearches({ onSelect }: { onSelect: (q: string) => 
     </View>
   );
 }
+
+

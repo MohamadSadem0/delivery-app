@@ -1,1 +1,2 @@
-export { default } from '@/screens/search/SearchResults';
+﻿export { default } from '@/screens/search/SearchResults';
+

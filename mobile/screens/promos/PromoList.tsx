@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
@@ -24,3 +24,4 @@ export default function PromoListScreen() {
     </Screen>
   );
 }
+

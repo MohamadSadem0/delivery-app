@@ -1,4 +1,4 @@
-import type { CourierLocation } from '@/types/models/Courier';
+﻿import type { CourierLocation } from '@/types/models/Courier';
 
 export type OrderTrackPoint = {
   lat: number;
@@ -15,3 +15,4 @@ export type OrderTrackState = {
   loading: boolean;
   error?: string;
 };
+

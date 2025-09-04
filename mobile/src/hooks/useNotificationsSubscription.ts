@@ -8,7 +8,8 @@ export function useNotificationsSubscription() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     startNotificationListeners();
-    (async () => { const token = await requestAndGetPushToken(); if (token) dispatch(registerPushTokenThunk(token)); })();
+    (async () => { const token = await requestAndGetPushToken(); if (token) dispatch(registerPushTokenThunk({ token } as any)); })();
     return () => stopNotificationListeners();
   }, [dispatch]);
 }
+

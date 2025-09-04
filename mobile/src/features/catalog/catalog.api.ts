@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { Product } from '@/types/models/Product';
 import type { Category } from '@/types/models/Category';
@@ -19,3 +19,4 @@ export async function apiListCategories(): Promise<Category[]> {
   const res = await axiosInstance.get(endpoints.catalog.categories);
   return res.data;
 }
+

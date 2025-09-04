@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { Text as RNText, TextProps } from 'react-native';
 import { useTheme } from '@/providers/ThemeProvider';
 
@@ -16,3 +16,5 @@ export default function Text({ style, muted, weight = 'regular', ...rest }: Prop
     />
   );
 }
+
+

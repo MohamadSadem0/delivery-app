@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { UserPrefs, ThemeMode, Language, Currency } from '@/types/models/UserPrefs';
 
 const initialState: UserPrefs = {
@@ -21,3 +21,4 @@ const slice = createSlice({
 
 export const { setTheme, setLanguage, setCurrency, setPushEnabled } = slice.actions;
 export default slice.reducer;
+

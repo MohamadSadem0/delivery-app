@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { CancelReasonsResponse, CancelResponse, CancellationDetailResponse } from './cancel.types';
 
@@ -16,3 +16,4 @@ export async function apiGetCancellation(orderId: number): Promise<CancellationD
   const res = await axiosInstance.get(endpoints.cancellation.detail(orderId));
   return res.data;
 }
+

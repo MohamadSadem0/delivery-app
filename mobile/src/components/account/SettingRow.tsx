@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import { View, Pressable, Switch } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -25,3 +25,5 @@ export default function SettingRow({ label, value, onPress, switchValue, onToggl
   );
   return onPress ? <Pressable onPress={onPress}>{row}</Pressable> : row;
 }
+
+

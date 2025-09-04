@@ -1,4 +1,4 @@
-export function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number) {
+﻿export function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number) {
   const R = 6371; // km
   const toRad = (d: number) => (d * Math.PI) / 180;
   const dLat = toRad(lat2 - lat1);
@@ -10,3 +10,4 @@ export function haversineKm(lat1: number, lon1: number, lat2: number, lon2: numb
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 }
+

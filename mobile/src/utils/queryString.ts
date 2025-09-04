@@ -1,4 +1,4 @@
-export function toQuery(params: Record<string, any>) {
+﻿export function toQuery(params: Record<string, any>) {
   const usp = new URLSearchParams();
   Object.entries(params).forEach(([k, v]) => {
     if (v === undefined || v === null || v === '') return;
@@ -8,3 +8,4 @@ export function toQuery(params: Record<string, any>) {
   });
   return usp.toString();
 }
+

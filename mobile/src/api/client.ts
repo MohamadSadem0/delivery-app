@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { normalizeApiError, ApiError } from '@/api/error';
 
 type HttpConfig = {
@@ -50,3 +50,4 @@ export async function httpDelete<T>(url: string, cfg: HttpConfig = {}): Promise<
     throw normalizeApiError(e);
   }
 }
+

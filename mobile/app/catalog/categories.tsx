@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import Screen from '@/components/layout/Screen';
 import CategoryChip from '@/components/catalog/CategoryChip';
@@ -40,3 +40,4 @@ export default function CategoriesScreen() {
     </Screen>
   );
 }
+

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { apiFlagReview } from './moderation.api';
 
 type State = { acting: boolean; error?: string | null; ok?: boolean };
@@ -20,3 +20,4 @@ const slice = createSlice({
   }
 });
 export default slice.reducer;
+

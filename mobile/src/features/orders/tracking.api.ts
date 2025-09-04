@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { CourierLocation } from '@/types/models/Courier';
 
@@ -13,3 +13,4 @@ export async function apiGetOrderPath(orderId: number): Promise<{ points: { lat:
   const res = await axiosInstance.get(endpoints.orders.path(orderId));
   return res.data;
 }
+

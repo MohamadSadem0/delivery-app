@@ -1,2 +1,3 @@
-// src/devtools/whyDidYouRender.ts
+﻿// src/devtools/whyDidYouRender.ts
 // placeholder only
+

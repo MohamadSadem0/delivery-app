@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import AddCardForm from '@/components/wallet/AddCardForm';
@@ -20,3 +20,5 @@ export default function AddCardScreen() {
     </Screen>
   );
 }
+
+

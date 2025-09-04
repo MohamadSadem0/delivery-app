@@ -1,4 +1,4 @@
-import { httpGet } from '@/api/client';
+﻿import { httpGet } from '@/api/client';
 import { endpoints } from '@/api/endpoints';
 import type { Page, Product } from '@/api/domainTypes';
 
@@ -13,3 +13,4 @@ export async function getVendorBalance(): Promise<{ balance: number; currency: '
 export async function getVendorLedger(params?: { page?: number }): Promise<{ data: Array<{ id: string; amount: number; type: string; createdAt: string }>; }> {
   return httpGet(endpoints.vendor.ledger, { params });
 }
+

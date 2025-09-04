@@ -16,7 +16,7 @@ export default function AddressEditScreen() {
 
   const onSubmit = async (values: any) => {
     if (editId) {
-      await dispatch(updateAddressThunk({ id: editId, patch: values }));
+      await dispatch(updateAddressThunk({ id: editId, payload: values }));
     } else {
       await dispatch(createAddressThunk(values));
     }
@@ -26,7 +26,8 @@ export default function AddressEditScreen() {
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">{editId ? 'Edit Address' : 'New Address'}</Text>
-      <AddressForm initial={initial} onSubmit={onSubmit} submitLabel={editId ? 'Save changes' : 'Create address'} />
+      <AddressForm initial={(initial as any)} onSubmit={onSubmit} submitLabel={editId ? 'Save changes' : 'Create address'} />
     </Screen>
   );
 }
+

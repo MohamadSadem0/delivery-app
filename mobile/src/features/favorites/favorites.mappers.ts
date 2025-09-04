@@ -1,4 +1,4 @@
-import type { FavoriteProduct, FavoriteVendor } from '@/types/models/Favorite';
+﻿import type { FavoriteProduct, FavoriteVendor } from '@/types/models/Favorite';
 
 export function mapFavProduct(api: any): FavoriteProduct {
   return {
@@ -23,3 +23,4 @@ export function mapFavVendor(api: any): FavoriteVendor {
     createdAt: api.created_at ?? api.createdAt ?? new Date().toISOString(),
   };
 }
+

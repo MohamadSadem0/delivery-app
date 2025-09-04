@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect } from 'react';
+﻿import React, { PropsWithChildren, useEffect } from 'react';
 import { router } from 'expo-router';
 import { useAppSelector } from '@/store/hooks';
 import { selectIsAuthenticated } from '@/features/auth/auth.selectors';
@@ -19,3 +19,5 @@ export function AuthGuard({ children }: PropsWithChildren) {
   if (!isAuthed) return null;
   return <>{children}</>;
 }
+
+

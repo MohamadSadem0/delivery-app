@@ -1,4 +1,4 @@
-export type Credentials = {
+﻿export type Credentials = {
   email: string;
   password: string;
 };
@@ -30,3 +30,4 @@ export type AuthState = {
   user: AuthUser | null;
   error?: string;
 };
+

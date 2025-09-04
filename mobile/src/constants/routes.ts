@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Route name constants to avoid typos.
  * These map to Expo Router segments.
  */
@@ -41,3 +41,4 @@ export const routes = {
     Contact: '/support/contact-us',
   },
 } as const;
+

@@ -1,4 +1,4 @@
-import type { Product } from '@/types/models/Product';
+﻿import type { Product } from '@/types/models/Product';
 import type { Category } from '@/types/models/Category';
 
 export type ProductQuery = {
@@ -19,3 +19,4 @@ export type CatalogState = {
   total: number;
   error?: string;
 };
+

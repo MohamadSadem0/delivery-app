@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { BalanceResponse, TransactionsResponse, MethodsResponse } from './wallet.types';
 import type { PaymentMethod } from '@/types/models/Payment';
@@ -42,3 +42,4 @@ export async function apiWithdraw(amount: number): Promise<{ ok: true }> {
   const res = await axiosInstance.post(endpoints.wallet.withdraw, { amount });
   return res.data;
 }
+

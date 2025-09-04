@@ -1,4 +1,4 @@
-export type AddressType = 'home' | 'work' | 'other';
+﻿export type AddressType = 'home' | 'work' | 'other';
 
 export type Address = {
   id: number;
@@ -20,3 +20,4 @@ export type Address = {
   createdAt: string;
   updatedAt: string;
 };
+

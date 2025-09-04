@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View } from 'react-native';
 import FilterChip from '@/components/ui/FilterChip';
 import ModalSheet from '@/components/ui/ModalSheet';
@@ -34,3 +34,5 @@ export default function VendorFilterBar() {
     </>
   );
 }
+
+

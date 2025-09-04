@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { Category } from '@/types/models/Category';
 
@@ -11,3 +11,4 @@ export async function apiGetCategory(id: number | string): Promise<Category> {
   const res = await axiosInstance.get(endpoints.categories.detail(id));
   return res.data;
 }
+

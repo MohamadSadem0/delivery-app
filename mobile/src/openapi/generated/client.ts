@@ -1,2 +1,3 @@
-// src/openapi/generated/client.ts
+﻿// src/openapi/generated/client.ts
 // placeholder only
+

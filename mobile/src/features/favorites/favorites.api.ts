@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { FavProductsResponse, FavVendorsResponse, ToggleResponse } from './favorites.types';
 
@@ -31,3 +31,4 @@ export async function apiRemoveFavVendor(favIdOrVendorId: number): Promise<Toggl
   const res = await axiosInstance.delete(endpoints.favorites.vendor(favIdOrVendorId));
   return res.data;
 }
+

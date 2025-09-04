@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Pressable, View } from 'react-native';
 import Text from '@/components/ui/Text';
 import OrderStatusBadge from './OrderStatusBadge';
@@ -24,3 +24,5 @@ export default function OrderCard({ order }: { order: Order }) {
     </Pressable>
   );
 }
+
+

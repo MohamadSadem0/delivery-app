@@ -1,2 +1,3 @@
-// src/i18n/index.ts
+﻿// src/i18n/index.ts
 // placeholder only
+

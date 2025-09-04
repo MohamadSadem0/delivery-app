@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import HomeHeader from '@/components/home/HomeHeader';
 import CategoryGrid from '@/components/categories/CategoryGrid';
-import VendorCarousel from '@/components/vendors/VendorCarousel';
+import VendorCarousel from '@/components/vendor/VendorCarousel';
 import ProductCarousel from '@/components/catalog/ProductCarousel';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchCategories } from '@/features/categories/categoriesSlice';
@@ -43,3 +43,4 @@ export default function HomeScreen() {
     </Screen>
   );
 }
+

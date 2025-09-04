@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { User } from '@/types/models/User';
 import { apiGetProfile, apiUpdateProfile } from './profile.api';
 
@@ -48,3 +48,4 @@ const slice = createSlice({
 
 export const { setProfile } = slice.actions;
 export default slice.reducer;
+

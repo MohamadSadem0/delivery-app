@@ -1,4 +1,4 @@
-import type { BaseQueryFn } from '@reduxjs/toolkit/query';
+﻿import type { BaseQueryFn } from '@reduxjs/toolkit/query';
 import type { AxiosRequestConfig, AxiosError } from 'axios';
 import { axiosInstance } from './axiosBase';
 import type { ApiError } from './types';
@@ -22,3 +22,4 @@ export const axiosBaseQuery =
       return { error: toApiError(err) };
     }
   };
+

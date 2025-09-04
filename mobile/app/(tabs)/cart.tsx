@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FlatList, View } from 'react-native';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
@@ -31,3 +31,4 @@ export default function CartTab() {
     </Screen>
   );
 }
+

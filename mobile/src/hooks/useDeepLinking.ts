@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import * as Linking from 'expo-linking';
 import { useAppDispatch } from '@/store/hooks';
 import { linkNavigated, linkReceived } from '@/features/deeplinks/deepLinksSlice';
@@ -19,3 +19,4 @@ export function useDeepLinking() {
     return () => sub.remove();
   }, [dispatch]);
 }
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { TextInput, View, TextInputProps } from 'react-native';
 import Text from './Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -33,3 +33,5 @@ export default function Input({ label, errorText, style, ...rest }: Props) {
     </View>
   );
 }
+
+

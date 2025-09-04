@@ -1,2 +1,4 @@
-// src/components/layout/TabBar.tsx
+﻿// src/components/layout/TabBar.tsx
 // placeholder only
+
+

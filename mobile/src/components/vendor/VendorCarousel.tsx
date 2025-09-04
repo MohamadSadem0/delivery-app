@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FlatList } from 'react-native';
 import VendorCard from './VendorCard';
 import type { Vendor } from '@/types/models/Vendor';
@@ -15,3 +15,5 @@ export default function VendorCarousel({ data }: { data: Vendor[] }) {
     />
   );
 }
+
+

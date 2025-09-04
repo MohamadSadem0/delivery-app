@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { AuthState, Credentials, RegisterPayload, AuthUser } from './auth.types';
 import { apiLogin, apiMe, apiRegister, apiLogout } from './auth.api';
 import { saveTokens, clearTokens } from './tokens.storage';
@@ -96,3 +96,4 @@ const slice = createSlice({
 
 export const { setUser } = slice.actions;
 export default slice.reducer;
+

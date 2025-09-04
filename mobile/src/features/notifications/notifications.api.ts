@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { RegisterTokenPayload, RegisterTokenResponse, NotificationsListResponse, NotificationResponse } from './notifications.types';
 
@@ -26,3 +26,4 @@ export async function apiPingTest(payload: { title: string; body?: string; data?
   const res = await axiosInstance.post(endpoints.notifications.test, payload);
   return res.data; // { ok: true }
 }
+

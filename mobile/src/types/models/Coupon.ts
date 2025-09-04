@@ -1,4 +1,4 @@
-export type CouponType = 'percentage' | 'fixed';
+﻿export type CouponType = 'percentage' | 'fixed';
 
 export type Coupon = {
   id: number;
@@ -14,3 +14,4 @@ export type Coupon = {
   isActive?: boolean;
   description?: string | null;
 };
+

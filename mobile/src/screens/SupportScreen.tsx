@@ -1,2 +1,4 @@
-// src/screens/SupportScreen.tsx
+﻿// src/screens/SupportScreen.tsx
 // placeholder only
+
+

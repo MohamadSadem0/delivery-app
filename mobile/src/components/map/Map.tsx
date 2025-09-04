@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+﻿import React, { forwardRef } from 'react';
 import MapView, { PROVIDER_GOOGLE, LatLng } from 'react-native-maps';
 
 type Props = React.ComponentProps<typeof MapView> & {
@@ -24,3 +24,5 @@ const Map = forwardRef<MapView, Props>(({ initialCenter, initialZoomDelta = 0.02
 });
 
 export default Map;
+
+

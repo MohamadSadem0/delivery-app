@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { OrderTrackState } from './tracking.types';
 import { apiGetCourierLocation, apiGetOrderPath } from './tracking.api';
 
@@ -54,3 +54,4 @@ const slice = createSlice({
 
 export const { resetTracking, setOrderId } = slice.actions;
 export default slice.reducer;
+

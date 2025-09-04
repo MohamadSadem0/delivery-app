@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 
@@ -24,3 +24,4 @@ const slice = createSlice({
   }
 });
 export default slice.reducer;
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import Text from '@/components/ui/Text';
 import Button from '@/components/ui/Button';
@@ -34,3 +34,5 @@ function Row({ label, value, bold = false }: { label: string; value: number; bol
     </View>
   );
 }
+
+

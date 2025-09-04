@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import AddCardButton from '@/components/payments/AddCardButton';
@@ -32,3 +32,4 @@ export default function PaymentsHome() {
     </Screen>
   );
 }
+

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { Order } from '@/types/models/Order';
 import type { Address } from '@/types/models/Address';
 import type { PaymentMethod } from '@/types/models/Payment';
@@ -108,3 +108,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+

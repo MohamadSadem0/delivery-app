@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Pressable } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -23,3 +23,5 @@ export default function FilterChip({ label, active, onPress }: Props) {
     </Pressable>
   );
 }
+
+

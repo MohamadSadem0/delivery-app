@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -18,7 +18,7 @@ export default function FavoriteVendorsScreen() {
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">Favorite vendors</Text>
-      {status === 'loading' ? <Text>Loading…</Text> : (
+      {status === 'loading' ? <Text>Loadingâ€¦</Text> : (
         <FlatList
           data={items}
           keyExtractor={(x) => String(x.vendorId)}
@@ -29,3 +29,5 @@ export default function FavoriteVendorsScreen() {
     </Screen>
   );
 }
+
+

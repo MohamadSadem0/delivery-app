@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Pressable } from 'react-native';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -14,15 +14,17 @@ export default function HomeHeader() {
   return (
     <View style={{ marginBottom: spacing.md }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Text weight="semiBold" style={{ fontSize: 22 }}>Hi {me?.name?.split(' ')[0] ?? 'there'} 👋</Text>
+        <Text weight="semiBold" style={{ fontSize: 22 }}>Hi {me?.name?.split(' ')[0] ?? 'there'} ðŸ‘‹</Text>
         <NotificationBell />
       </View>
       <Pressable
         onPress={() => router.push('/search')}
         style={{ marginTop: spacing.sm, padding: spacing.md, borderRadius: radii.md, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card }}
       >
-        <Text muted>Search products, vendors…</Text>
+        <Text muted>Search products, vendorsâ€¦</Text>
       </Pressable>
     </View>
   );
 }
+
+

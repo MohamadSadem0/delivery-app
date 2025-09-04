@@ -1,2 +1,3 @@
-// app/delivery/_layout.tsx
+﻿// app/delivery/_layout.tsx
 // placeholder only
+

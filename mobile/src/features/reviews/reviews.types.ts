@@ -1,4 +1,4 @@
-import type { Review, ReviewSummary } from '@/types/models/Review';
+﻿import type { Review, ReviewSummary } from '@/types/models/Review';
 
 export type ReviewsResponse = { data: Review[]; total?: number };
 export type ReviewResponse = { data: Review };
@@ -13,3 +13,4 @@ export type CreateReviewPayload = {
 };
 
 export type UpdateReviewPayload = Partial<CreateReviewPayload>;
+

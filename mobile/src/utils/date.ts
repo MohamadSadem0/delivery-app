@@ -1,4 +1,4 @@
-export function toISO(date: Date): string {
+﻿export function toISO(date: Date): string {
   return date.toISOString();
 }
 export function addMinutes(date: Date, mins: number): Date {
@@ -7,3 +7,4 @@ export function addMinutes(date: Date, mins: number): Date {
 export function nowISO(): string {
   return new Date().toISOString();
 }
+

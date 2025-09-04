@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { WalletBalance, WalletTransaction, PaymentMethod } from '@/types/models/Payment';
 import { apiAddCard, apiGetWalletBalance, apiListPaymentMethods, apiListWalletTransactions, apiRemoveMethod, apiSetDefaultMethod, apiTopUp, apiWithdraw } from './wallet.api';
 
@@ -111,3 +111,4 @@ const slice = createSlice({
 
 export const { prependTransactions } = slice.actions;
 export default slice.reducer;
+

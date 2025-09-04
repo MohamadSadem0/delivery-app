@@ -1,2 +1,3 @@
-// app/(tabs)/search.tsx
+﻿// app/(tabs)/search.tsx
 // placeholder only
+

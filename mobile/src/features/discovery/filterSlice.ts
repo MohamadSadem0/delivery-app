@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+﻿import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { CatalogFilters, VendorFilters } from '@/types/filters/FilterTypes';
 
 type DiscoveryState = {
@@ -32,3 +32,4 @@ const slice = createSlice({
 
 export const { setCatalogFilters, resetCatalogFilters, setVendorFilters, resetVendorFilters } = slice.actions;
 export default slice.reducer;
+

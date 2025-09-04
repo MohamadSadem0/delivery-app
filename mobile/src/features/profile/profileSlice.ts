@@ -1,2 +1,3 @@
-// src/features/profile/profileSlice.ts
+﻿// src/features/profile/profileSlice.ts
 // placeholder only
+

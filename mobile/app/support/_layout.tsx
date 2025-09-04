@@ -1,2 +1,3 @@
-// app/support/_layout.tsx
+﻿// app/support/_layout.tsx
 // placeholder only
+

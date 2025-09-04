@@ -1,2 +1,4 @@
-// src/screens/CheckoutConfirmationScreen.tsx
+﻿// src/screens/CheckoutConfirmationScreen.tsx
 // placeholder only
+
+

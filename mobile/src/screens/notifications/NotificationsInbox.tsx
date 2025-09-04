@@ -14,12 +14,12 @@ export default function NotificationsInbox() {
   const status = useAppSelector(selectInboxStatus);
   const [page, setPage] = useState(1);
 
-  useEffect(() => { dispatch(fetchNotifications(1) as any); }, [dispatch]);
+  useEffect(() => { dispatch(fetchNotifications((1) as any) as any); }, [dispatch]);
 
   return (
     <Screen>
       <Text weight="semiBold" style={{ fontSize: 22, marginBottom: 8 }}>Notifications</Text>
-      {status === 'loading' && !items.length ? <Text>Loading…</Text> : (
+      {status === 'loading' && !items.length ? <Text>Loadingâ€¦</Text> : (
         <FlatList
           data={items}
           keyExtractor={(x) => String(x.id)}
@@ -33,9 +33,11 @@ export default function NotificationsInbox() {
             />
           )}
           onEndReachedThreshold={0.6}
-          onEndReached={() => { const next = page + 1; setPage(next); dispatch(fetchNotifications(next) as any); }}
+          onEndReached={() => { const next = page + 1; setPage(next); dispatch(fetchNotifications((next) as any) as any); }}
         />
       )}
     </Screen>
   );
 }
+
+

@@ -1,2 +1,3 @@
-// src/openapi/generated/schemas.ts
+﻿// src/openapi/generated/schemas.ts
 // placeholder only
+

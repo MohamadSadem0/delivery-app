@@ -1,4 +1,4 @@
-export type NotificationKind =
+﻿export type NotificationKind =
   | 'order_status'     // order status changed
   | 'promo'            // marketing
   | 'chat'             // chat message
@@ -14,3 +14,4 @@ export type AppNotification = {
   read: boolean;
   createdAt: string;
 };
+

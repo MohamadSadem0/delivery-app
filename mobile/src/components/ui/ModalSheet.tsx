@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Modal, View, Pressable } from 'react-native';
 import { useTheme } from '@/providers/ThemeProvider';
 
@@ -20,3 +20,5 @@ export default function ModalSheet({ visible, onClose, children }: Props) {
     </Modal>
   );
 }
+
+

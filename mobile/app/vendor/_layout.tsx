@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Stack } from 'expo-router';
 
 export default function VendorsLayout() {
@@ -9,3 +9,4 @@ export default function VendorsLayout() {
     </Stack>
   );
 }
+

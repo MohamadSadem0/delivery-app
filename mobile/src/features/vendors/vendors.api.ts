@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { Vendor } from '@/types/models/Vendor';
 import type { VendorQuery } from './vendors.types';
@@ -13,3 +13,4 @@ export async function apiGetVendor(id: number | string): Promise<Vendor> {
   const res = await axiosInstance.get(endpoints.vendors.detail(id));
   return res.data;
 }
+

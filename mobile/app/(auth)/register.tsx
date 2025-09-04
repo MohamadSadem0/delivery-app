@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useFormik } from 'formik';
 import { registerSchema } from '@/forms/auth.schemas';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -40,3 +40,4 @@ export default function Register() {
     </Screen>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 
 export function usePaginatedQuery<T>(
   fetchPage: (page: number) => Promise<{ data: T[]; total?: number }>,
@@ -27,10 +27,12 @@ export function usePaginatedQuery<T>(
   useEffect(() => {
     mounted.current = true;
     load(1);
-    return () => { mounted.current = False; };
+    return () => { mounted.current = false; };
   }, deps); // eslint-disable-line react-hooks/exhaustive-deps
 
   const canLoadMore = total === undefined ? true : items.length < total;
 
   return { items, page, total, loading, load, canLoadMore };
 }
+
+

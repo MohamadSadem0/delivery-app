@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/api/axiosBase';
+﻿import { axiosInstance } from '@/api/axiosBase';
 import { endpoints } from '@/api/endpoints';
 import type { SavedCard } from '@/types/models/Card';
 import type { CreateIntentPayload, PaymentIntentRes, SaveCardPayload, ApiOk } from '@/services/payments/types';
@@ -27,3 +27,4 @@ export async function apiSaveCard(payload: SaveCardPayload): Promise<SavedCard> 
   const res = await axiosInstance.post(endpoints.payments.saveCard, payload);
   return res.data;
 }
+

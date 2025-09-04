@@ -1,2 +1,4 @@
-// src/screens/VendorScreen.tsx
+﻿// src/screens/VendorScreen.tsx
 // placeholder only
+
+

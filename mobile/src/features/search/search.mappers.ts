@@ -1,4 +1,4 @@
-import type { SearchResponse, ProductHit, Facet, FacetValue } from '@/types/models/Search';
+﻿import type { SearchResponse, ProductHit, Facet, FacetValue } from '@/types/models/Search';
 
 export function mapHit(api: any): ProductHit {
   return {
@@ -33,3 +33,4 @@ export function mapSearchResponse(api: any): SearchResponse {
     tookMs: api.took_ms ?? api.tookMs,
   };
 }
+

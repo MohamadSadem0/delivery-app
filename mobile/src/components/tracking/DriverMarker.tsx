@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Marker } from 'react-native-maps';
 import type { DriverLocation } from '@/types/models/Tracking';
 
@@ -14,3 +14,5 @@ export default function DriverMarker({ loc }: { loc: DriverLocation }) {
     />
   );
 }
+
+

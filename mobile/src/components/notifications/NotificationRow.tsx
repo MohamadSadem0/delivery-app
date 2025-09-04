@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Pressable, View, Image } from 'react-native';
 import Text from '@/components/ui/Text';
 import type { AppNotification } from '@/types/models/Notification';
@@ -19,3 +19,5 @@ export default function NotificationRow({ item, onPress }: { item: AppNotificati
     </Pressable>
   );
 }
+
+

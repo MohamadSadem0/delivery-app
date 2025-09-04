@@ -1,4 +1,4 @@
-import { View, TextInput } from 'react-native';
+﻿import { View, TextInput } from 'react-native';
 import Button from '@/components/ui/Button';
 import Text from '@/components/ui/Text';
 import { useTheme } from '@/providers/ThemeProvider';
@@ -39,3 +39,5 @@ export default function ApplyCouponField({ contextPayload }: { contextPayload?: 
     </View>
   );
 }
+
+

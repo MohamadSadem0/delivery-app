@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+﻿import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { Address } from '@/types/models/Address';
 import {
   apiCreateAddress, apiDeleteAddress, apiListAddresses, apiSetDefaultAddress, apiUpdateAddress
@@ -69,3 +69,10 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+
+export { createAddress as createAddressThunk };
+export { updateAddress as updateAddressThunk };
+export { deleteAddress as deleteAddressThunk };
+export { setDefaultAddress as setDefaultAddressThunk };
+
+

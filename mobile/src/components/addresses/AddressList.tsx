@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FlatList } from 'react-native';
 import type { Address } from '@/types/models/Address';
 import AddressCard from './AddressCard';
@@ -21,3 +21,5 @@ export default function AddressList({
     />
   );
 }
+
+

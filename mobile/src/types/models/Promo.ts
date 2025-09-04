@@ -1,4 +1,4 @@
-export type Currency = 'LBP' | 'USD';
+﻿export type Currency = 'LBP' | 'USD';
 
 export type PromoType = 'percentage' | 'fixed' | 'delivery_fee';
 
@@ -27,3 +27,4 @@ export type PromoApplication = {
   affects: 'subtotal' | 'delivery';
   label?: string;
 };
+

@@ -1,4 +1,4 @@
-import type { LatLng } from '@/types/models/Tracking';
+﻿import type { LatLng } from '@/types/models/Tracking';
 export function haversineMeters(a: LatLng, b: LatLng) {
   const R = 6371000;
   const dLat = (b.latitude - a.latitude) * Math.PI / 180;
@@ -8,3 +8,4 @@ export function haversineMeters(a: LatLng, b: LatLng) {
   const c = 2 * Math.asin(Math.sqrt(s1*s1 + Math.cos(lat1)*Math.cos(lat2)*s2*s2));
   return R * c;
 }
+

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+﻿import { createSlice } from '@reduxjs/toolkit';
 
 type AppState = {
   booted: boolean;
@@ -25,3 +25,4 @@ const appSlice = createSlice({
 
 export const { setBooted, setVersion } = appSlice.actions;
 export default appSlice.reducer;
+

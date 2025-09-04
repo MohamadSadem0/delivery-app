@@ -1,4 +1,4 @@
-import type { Review, ReviewSummary } from '@/types/models/Review';
+﻿import type { Review, ReviewSummary } from '@/types/models/Review';
 
 export function mapReview(api: any): Review {
   return {
@@ -32,3 +32,4 @@ export function mapSummary(api: any): ReviewSummary {
     }
   };
 }
+

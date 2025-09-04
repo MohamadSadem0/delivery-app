@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import Screen from '@/components/layout/Screen';
 import Text from '@/components/ui/Text';
 import Button from '@/components/ui/Button';
@@ -60,3 +60,4 @@ export default function PaymentScreen() {
     </Screen>
   );
 }
+

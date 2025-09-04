@@ -26,18 +26,18 @@ export default function CancelOrderScreen() {
 
   if (!id) return <Screen><Text>Invalid order</Text></Screen>;
 
-  const canSubmit = !!selected && (reasons.find(r => r.code === selected)?.requiresNote ? note.trim().length >= 5 : true);
+  const canSubmit = !!selected && (reasons.find((r: any) => r.code === selected)?.requiresNote ? note.trim().length >= 5 : true);
 
   return (
     <Screen>
       <Text style={{ fontSize: 22, marginBottom: 12 }} weight="semiBold">Cancel order #{id}</Text>
-      {reasonsStatus === 'loading' ? <Text>Loading reasons…</Text> : <ReasonSelector reasons={reasons} selected={selected} onChange={setSelected} />}
+      {reasonsStatus === 'loading' ? <Text>Loading reasonsâ€¦</Text> : <ReasonSelector reasons={reasons} selected={selected} onChange={setSelected} />}
       <View style={{ height: spacing.md }} />
       <Text muted>Extra details (optional)</Text>
       <TextInput
         value={note}
         onChangeText={setNote}
-        placeholder="Tell us more…"
+        placeholder="Tell us moreâ€¦"
         placeholderTextColor={colors.textMuted}
         style={{ borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: radii.md, padding: spacing.md, minHeight: 88 }}
         multiline
@@ -50,3 +50,5 @@ export default function CancelOrderScreen() {
     </Screen>
   );
 }
+
+
