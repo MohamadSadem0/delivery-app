@@ -35,10 +35,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-app-example
-.env
-.env.development
-.env.example
-.env.production
-.env.staging
